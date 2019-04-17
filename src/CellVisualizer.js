@@ -189,6 +189,12 @@ export default class CellVisualizer extends Component {
         const mapping = this.props.groupMapping.find(m => m.group === d.group);
         return mapping ? mapping.color : "#333";
       })
+      .on("click", function(d) {
+        console.log(d.id);
+        d3.select("#description-header").text(d.id);
+        d3.select("#description-details-1").text("Group: " + d.group);
+        d3.select("#description-details-2").text("Group: " + d.group);
+      })
       .call(this.drag(this.simulation));
 
     this.simulation.on("tick", this.onTick.bind(this));
@@ -224,7 +230,6 @@ export default class CellVisualizer extends Component {
         .attr("fixed", false)
         .attr("cy", result.y)
         .on("mouseover", function(d, i) {
-          console.log(this);
           d3.select(this.parentNode)
             .append("text")
             .style("fill", "black") // fill the text with the colour black
@@ -237,12 +242,9 @@ export default class CellVisualizer extends Component {
             .text(function(d) {
               return [d.x.toFixed(2), d.y.toFixed(2)];
             });
-          console.log("IN: t" + d.x + "-" + d.y + "-" + i);
         })
         .on("mouseout", function(d, i) {
-          console.log(this);
           d3.select("#node" + i).remove();
-          console.log("OUT: t" + d.x + "-" + d.y + "-" + i);
         });
     });
     // Update link

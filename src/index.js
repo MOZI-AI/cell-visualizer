@@ -74,8 +74,8 @@ export class App extends Component {
             width: 350
           }}
         >
-          <h3>TAB1</h3>
-          <p>
+          <h3 id="description-header">Cell Identity</h3>
+          <p id="description-details-1">
             activation of MAPK activity;activation of MAPKKK activity;Fc-epsilon
             receptor signaling pathway;heart morphogenesis;I-kappaB
             kinase/NF-kappaB cascade;in utero embryonic development;innate
@@ -83,7 +83,7 @@ export class App extends Component {
             toll-like receptor signaling pathway;MyD88-independent toll-like
             receptor signaling pathway;nucleotide-binding domain,
           </p>
-          <p>
+          <p id="description-details-2">
             activity;stress-activated MAPK cascade;toll-like receptor 10
             signaling pathway;toll-like receptor 2 signaling pathway;toll-like
           </p>

@@ -189,12 +189,16 @@ export default class CellVisualizer extends Component {
         const mapping = this.props.groupMapping.find(m => m.group === d.group);
         return mapping ? mapping.color : "#333";
       })
-      .on("click", function(d) {
-        console.log(d.id);
-        d3.select("#description-header").text(d.id);
-        d3.select("#description-details-1").text("Group: " + d.group);
-        d3.select("#description-details-2").text("Group: " + d.group);
-      })
+      .on(
+        "click",
+        function(d) {
+          this.props.onNodeSelected(d);
+          console.log(d);
+          // d3.select("#description-header").text(d.id);
+          // d3.select("#description-details-1").text("Group: " + d.group);
+          // d3.select("#description-details-2").text("Group: " + d.group);
+        }.bind(this)
+      )
       .call(this.drag(this.simulation));
 
     this.simulation.on("tick", this.onTick.bind(this));

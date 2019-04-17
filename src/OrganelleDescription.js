@@ -21,19 +21,9 @@ export default class OrganelleDescription extends React.Component {
           width: 350
         }}
       >
-        <h3 id="description-header">Cell Identity</h3>
-        <p id="description-details-1">
-          activation of MAPK activity;activation of MAPKKK activity;Fc-epsilon
-          receptor signaling pathway;heart morphogenesis;I-kappaB
-          kinase/NF-kappaB cascade;in utero embryonic development;innate immune
-          response;JNK cascade;lung development;MyD88-dependent toll-like
-          receptor signaling pathway;MyD88-independent toll-like receptor
-          signaling pathway;nucleotide-binding domain,
-        </p>
-        <p id="description-details-2">
-          activity;stress-activated MAPK cascade;toll-like receptor 10 signaling
-          pathway;toll-like receptor 2 signaling pathway;toll-like
-        </p>
+        <h3>{this.props.selectedNode.id}</h3>
+        <p>{this.props.selectedNode.group}</p>
+        <p>{this.props.selectedNode.group}</p>
         <div style={{ textAlign: "right" }}>
           <Button.Group>
             <Button type="default">Close</Button>

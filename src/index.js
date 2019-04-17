@@ -27,7 +27,8 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: undefined
+      data: undefined,
+      selectedNode: undefined
     };
   }
 
@@ -60,9 +61,15 @@ export class App extends Component {
           onSearch={value => console.log(value)}
           style={{ position: "absolute", top: 15, width: 600 }}
         />
-        <CellVisualizer groupMapping={GroupMapping} data={this.state.data} />
+        <CellVisualizer
+          groupMapping={GroupMapping}
+          data={this.state.data}
+          onNodeSelected={node => this.setState({ selectedNode: node })}
+        />
 
-        <OrganelleDescription />
+        {this.state.selectedNode && (
+          <OrganelleDescription selectedNode={this.state.selectedNode} />
+        )}
         <div style={{ position: "absolute", bottom: 0, width: 600 }}>
           <PercentageChart data={data} />
         </div>

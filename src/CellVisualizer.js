@@ -222,7 +222,28 @@ export default class CellVisualizer extends Component {
       d3.select(this)
         .attr("cx", result.x)
         .attr("fixed", false)
-        .attr("cy", result.y);
+        .attr("cy", result.y)
+        .on("mouseover", function(d, i) {
+          console.log(this);
+          d3.select(this.parentNode)
+            .append("text")
+            .style("fill", "black") // fill the text with the colour black
+            .style("font-size", "16px")
+            .attr("x", d.x) // set x position of left side of text
+            .attr("y", d.y) // set y position of bottom of text
+            .attr("dy", "-20") // set offset y position
+            .attr("text-anchor", "middle") // set anchor y justification
+            .attr("id", "node" + i)
+            .text(function(d) {
+              return [d.x.toFixed(2), d.y.toFixed(2)];
+            });
+          console.log("IN: t" + d.x + "-" + d.y + "-" + i);
+        })
+        .on("mouseout", function(d, i) {
+          console.log(this);
+          d3.select("#node" + i).remove();
+          console.log("OUT: t" + d.x + "-" + d.y + "-" + i);
+        });
     });
     // Update link
     this.link.each(function(d) {

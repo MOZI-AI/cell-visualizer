@@ -68,8 +68,9 @@ export default class CellVisualizer extends Component {
     this.cell = {};
   }
 
-  componentDidUpdate() {
-    if (this.props.data) {
+  componentDidUpdate(prevProp) {
+    if (prevProp.data == this.props.data) {
+    } else if (this.props.data) {
       this.initGraph();
     }
   }
@@ -193,13 +194,18 @@ export default class CellVisualizer extends Component {
         "click",
         function(d) {
           this.props.onNodeSelected(d);
-          console.log(d);
-          // d3.select("#description-header").text(d.id);
-          // d3.select("#description-details-1").text("Group: " + d.group);
-          // d3.select("#description-details-2").text("Group: " + d.group);
+          // console.log(d);
         }.bind(this)
       )
       .call(this.drag(this.simulation));
+
+    d3.select("#cell_group").on(
+      "click",
+      function(d) {
+        console.log(d);
+        this.props.onNodeSelected(undefined);
+      }.bind(this)
+    );
 
     this.simulation.on("tick", this.onTick.bind(this));
   }

@@ -25,10 +25,12 @@ export default class OrganelleDescription extends React.Component {
         <p>{this.props.selectedNode.group}</p>
         <p>{this.props.selectedNode.group}</p>
         <div style={{ textAlign: "right" }}>
-          <Button.Group>
-            <Button type="default">Close</Button>
-            <Button type="primary">Learn more</Button>
-          </Button.Group>
+          {this.props.selectedNode && (
+            <Button.Group>
+              <Button type="default">Close</Button>
+              <Button type="primary">Learn more</Button>
+            </Button.Group>
+          )}
         </div>
       </div>
     );

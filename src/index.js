@@ -3,9 +3,10 @@ import { fetchGraphData } from "./utils";
 import ReactDOM from "react-dom";
 import CellVisualizer from "./CellVisualizer";
 import { PercentageChart } from "./PercentageChart";
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import "antd/dist/antd.css";
 import "./style.css";
+import OrganelleDescription from "./OrganelleDescription";
 
 // Map a group of nodes to the cellular component (organnel) they belong to and their fill color
 const GroupMapping = [
@@ -61,39 +62,7 @@ export class App extends Component {
         />
         <CellVisualizer groupMapping={GroupMapping} data={this.state.data} />
 
-        <div
-          style={{
-            position: "absolute",
-            display: "flex",
-            height: "100vh",
-            right: 0,
-            top: 0,
-            paddingTop: 15,
-            paddingRight: 15,
-            flexDirection: "column",
-            width: 350
-          }}
-        >
-          <h3 id="description-header">Cell Identity</h3>
-          <p id="description-details-1">
-            activation of MAPK activity;activation of MAPKKK activity;Fc-epsilon
-            receptor signaling pathway;heart morphogenesis;I-kappaB
-            kinase/NF-kappaB cascade;in utero embryonic development;innate
-            immune response;JNK cascade;lung development;MyD88-dependent
-            toll-like receptor signaling pathway;MyD88-independent toll-like
-            receptor signaling pathway;nucleotide-binding domain,
-          </p>
-          <p id="description-details-2">
-            activity;stress-activated MAPK cascade;toll-like receptor 10
-            signaling pathway;toll-like receptor 2 signaling pathway;toll-like
-          </p>
-          <div style={{ textAlign: "right" }}>
-            <Button.Group>
-              <Button type="default">Close</Button>
-              <Button type="primary">Learn more</Button>
-            </Button.Group>
-          </div>
-        </div>
+        <OrganelleDescription />
         <div style={{ position: "absolute", bottom: 0, width: 600 }}>
           <PercentageChart data={data} />
         </div>

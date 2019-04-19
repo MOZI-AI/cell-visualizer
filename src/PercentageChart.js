@@ -39,6 +39,9 @@ export class PercentageChart extends Component {
       .attr("height", this.height)
       .append("g");
 
+    // Clear the div before redrawing
+    d3.select(".tooltip").remove();
+
     // Define the div for the tooltip
     var div = d3
       .select("body")

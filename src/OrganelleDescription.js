@@ -7,6 +7,8 @@ export default class OrganelleDescription extends React.Component {
   }
 
   render() {
+    const { selectedNode, onNodeSelected } = this.props;
+
     return (
       <div
         style={{
@@ -21,15 +23,24 @@ export default class OrganelleDescription extends React.Component {
           width: 350
         }}
       >
-        <h3>{this.props.selectedNode.id}</h3>
-        <p>{this.props.selectedNode.group}</p>
-        <p>{this.props.selectedNode.group}</p>
-        <div style={{ textAlign: "right" }}>
-          <Button.Group>
-            <Button type="default">Close</Button>
-            <Button type="primary">Learn more</Button>
-          </Button.Group>
-        </div>
+        {selectedNode && (
+          <div>
+            <h3>{selectedNode.id}</h3>
+            <p>{selectedNode.group}</p>
+            <p>{selectedNode.group}</p>
+            <div style={{ textAlign: "right" }}>
+              <Button.Group>
+                <Button
+                  type="default"
+                  onClick={() => onNodeSelected(undefined)}
+                >
+                  Close
+                </Button>
+                <Button type="primary">Learn more</Button>
+              </Button.Group>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

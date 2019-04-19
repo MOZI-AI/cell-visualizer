@@ -30,10 +30,16 @@ export class App extends Component {
       data: undefined,
       selectedNode: undefined
     };
+
+    this.handleNodeSelected = this.handleNodeSelected.bind(this);
   }
 
   componentDidMount() {
     fetchGraphData().then(data => this.setState({ data: data }));
+  }
+
+  handleNodeSelected(node) {
+    this.setState({ selectedNode: node });
   }
 
   renderVisualization() {
@@ -64,11 +70,14 @@ export class App extends Component {
         <CellVisualizer
           groupMapping={GroupMapping}
           data={this.state.data}
-          onNodeSelected={node => this.setState({ selectedNode: node })}
+          onNodeSelected={this.handleNodeSelected}
         />
 
         {this.state.selectedNode && (
-          <OrganelleDescription selectedNode={this.state.selectedNode} />
+          <OrganelleDescription
+            selectedNode={this.state.selectedNode}
+            onNodeSelected={this.handleNodeSelected}
+          />
         )}
         <div style={{ position: "absolute", bottom: 0, width: 600 }}>
           <PercentageChart data={data} />

@@ -198,7 +198,6 @@ export default class CellVisualizer extends Component {
         }.bind(this)
       )
       .call(this.drag(this.simulation));
-
     this.simulation.on("tick", this.onTick.bind(this));
   }
 

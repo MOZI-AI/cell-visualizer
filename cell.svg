@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="245.91781"
-     inkscape:cy="461.73921"
+     inkscape:cx="486.44572"
+     inkscape:cy="349.91302"
      inkscape:document-units="px"
      inkscape:current-layer="cell_group"
      showgrid="false"
@@ -62,13 +62,13 @@
      id="cell_group"
      transform="translate(0,100)">
     <g
-       transform="matrix(1.1824742,0.0297341,0,1.1819658,25.057924,-130.67429)"
+       transform="matrix(1.1216921,0.02767606,0,1.1001562,52.038648,-100.60043)"
        class="group_component"
        inkscape:label="cell_wall_group"
        id="cell_wall_group">
       <circle
          style="fill:#eaf0ff;fill-opacity:1;stroke:#aaccff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle3966"
+         id="cell_wall"
          cx="400"
          cy="400"
          r="397.01193"
@@ -89,7 +89,7 @@
        id="plasma_membrane_group"
        inkscape:label="plasma_membrane_group"
        class="group_component"
-       transform="translate(97.511932,-47.511932)">
+       transform="matrix(0.94859755,0,0,0.93078518,120.76834,-23.194146)">
       <circle
          inkscape:label="plasma_membrane"
          r="397.01193"
@@ -113,7 +113,7 @@
        id="cytoplasm_group"
        inkscape:label="cytoplasm_group"
        class="group_component"
-       transform="translate(97.511932,-47.511932)"
+       transform="matrix(0.94859755,0,0,0.93078518,120.76834,-23.194146)"
        style="stroke:#afe9af">
       <circle
          r="324.59213"
@@ -130,7 +130,7 @@
        id="nucleus_group"
        inkscape:label="nucleus_group"
        class="group_component"
-       transform="matrix(1.2967465,0,0,1.3143348,-84.624855,-36.581709)">
+       transform="matrix(1.2300906,0,0,1.2233633,-52.006168,-13.020456)">
       <circle
          r="80.523537"
          inkscape:label="nucleus"
@@ -143,338 +143,385 @@
        id="endosome_group"
        inkscape:label="endosome_group"
        class="group_component"
-       transform="translate(176.50253,-27.497475)">
+       transform="matrix(0.94859755,0,0,0.93078518,195.69863,-4.5649867)"
+       style="stroke:#ff7f2a;fill:#803300">
       <circle
          inkscape:label="endosome"
          r="56.679771"
          cy="424.5"
          cx="199.5"
          id="endosome"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="fill:#803300;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
-       transform="translate(199.33809,-397.06811)"
+       transform="matrix(0.94859755,0,0,0.93078518,217.36039,-348.55586)"
        class="group_component"
        inkscape:label="glyoxysome_group"
-       id="glyoxysome_group">
+       id="glyoxysome_group"
+       style="fill:#ff9955;stroke:#aa4400">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle3974"
+         style="fill:#ff9955;fill-opacity:1;stroke:#aa4400;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="glyoxysome"
          cx="207.27817"
          cy="510.96448"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="glyoxysome" />
       <text
          id="text4066"
          x="171"
-         y="480">
+         y="480"
+         style="fill:#ff9955;stroke:#aa4400">
         <tspan
-           id="tspan4070">Glyoxysome</tspan>
+           id="tspan4070"
+           style="fill:#ff9955;stroke:#aa4400">Glyoxysome</tspan>
       </text>
     </g>
     <g
        id="peroxisome_group"
        inkscape:label="peroxisome_group"
        class="group_component"
-       transform="translate(117.33809,-309.45079)">
+       transform="matrix(0.94859755,0,0,0.93078518,139.57539,-267.00295)"
+       style="fill:#ffb380;stroke:#d45500">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="peroxisome"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle3982"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="peroxisome"
+         style="fill:#ffb380;fill-opacity:1;stroke:#d45500;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="484"
          x="164"
-         id="text4074">
+         id="text4074"
+         style="fill:#ffb380;stroke:#d45500">
         <tspan
-           id="tspan4072">Peroxisome</tspan>
+           id="tspan4072"
+           style="fill:#ffb380;stroke:#d45500">Peroxisome</tspan>
       </text>
     </g>
     <g
-       transform="translate(48.89148,-193.49242)"
+       transform="matrix(0.94859755,0,0,0.93078518,74.647101,-159.07062)"
        class="group_component"
        inkscape:label="glycosome_group"
-       id="glycosome_group">
+       id="glycosome_group"
+       style="fill:#ac9393;stroke:#6c5353">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle3986"
+         style="fill:#ac9393;fill-opacity:1;stroke:#6c5353;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="glycosome"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="glycosome" />
       <text
          id="text4084"
          x="165"
-         y="483">
+         y="483"
+         style="fill:#ac9393;stroke:#6c5353">
         <tspan
-           id="tspan4082">Glycosome</tspan>
+           id="tspan4082"
+           style="fill:#ac9393;stroke:#6c5353">Glycosome</tspan>
       </text>
     </g>
     <g
        id="mtoc_group"
        inkscape:label="mtoc_group"
        class="group_component"
-       transform="matrix(0.65796981,0,0,0.63150535,120.13703,109.06864)">
+       transform="matrix(0.62414855,0,0,0.58779582,142.23045,122.54873)"
+       style="fill:#d35f5f;stroke:#a02c2c">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="mtoc"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle3990"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="mtoc"
+         style="fill:#d35f5f;fill-opacity:1;stroke:#a02c2c;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="484.16702"
          x="175.15863"
-         id="text4090">
+         id="text4090"
+         style="fill:#d35f5f;stroke:#a02c2c">
         <tspan
-           id="tspan4088">MTOC</tspan>
+           id="tspan4088"
+           style="fill:#d35f5f;stroke:#a02c2c">MTOC</tspan>
       </text>
     </g>
     <g
-       transform="translate(127.42345,2.3877559)"
+       transform="matrix(0.94859755,0,0,0.93078518,149.14234,23.251743)"
        class="group_component"
        inkscape:label="centrosome_group"
-       id="centrosome_group">
+       id="centrosome_group"
+       style="fill:#ac9d93;stroke:#483e37">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle3994"
+         style="fill:#ac9d93;fill-opacity:1;stroke:#483e37;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="centrosome"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="centrosome" />
       <text
          id="text4096"
          x="163"
-         y="483">
+         y="483"
+         style="fill:#ac9d93;stroke:#483e37">
         <tspan
-           id="tspan4094">Centrosome</tspan>
+           id="tspan4094"
+           style="fill:#ac9d93;stroke:#483e37">Centrosome</tspan>
       </text>
     </g>
     <g
        id="chloroplast_group"
        inkscape:label="chloroplast_group"
        class="group_component"
-       transform="translate(240.06392,84.862916)">
+       transform="matrix(0.94859755,0,0,0.93078518,255.99281,100.0184)"
+       style="fill:#d4aa00;stroke:#554400">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="chloroplast"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle3998"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="chloroplast"
+         style="fill:#d4aa00;fill-opacity:1;stroke:#554400;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="481"
          x="165"
-         id="text4102">
+         id="text4102"
+         style="fill:#d4aa00;stroke:#554400">
         <tspan
-           id="tspan4100">Chloroplast</tspan>
+           id="tspan4100"
+           style="fill:#d4aa00;stroke:#554400">Chloroplast</tspan>
       </text>
     </g>
     <g
-       transform="translate(391.72496,67.254837)"
+       transform="matrix(0.94859755,0,0,0.93078518,399.8581,83.629061)"
        class="group_component"
        inkscape:label="apicoplast_group"
-       id="apicoplast_group">
+       id="apicoplast_group"
+       style="fill:#88aa00;stroke:#445500">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle4002"
+         style="fill:#88aa00;fill-opacity:1;stroke:#445500;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="apicoplast"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="apicoplast" />
       <text
          id="text4114"
          x="171"
-         y="479">
+         y="479"
+         style="fill:#88aa00;stroke:#445500">
         <tspan
-           id="tspan4112">Apicoplast</tspan>
+           id="tspan4112"
+           style="fill:#88aa00;stroke:#445500">Apicoplast</tspan>
       </text>
     </g>
     <g
        id="amyloplast_group"
        inkscape:label="amyloplast_group"
        class="group_component"
-       transform="translate(287.17366,-26.653888)">
+       transform="matrix(0.94859755,0,0,0.93078518,300.68099,-3.7797885)"
+       style="fill:#d3bc5f;stroke:#786721">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="amyloplast"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle4006"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="amyloplast"
+         style="fill:#d3bc5f;fill-opacity:1;stroke:#786721;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="479"
          x="165"
-         id="text4120">
+         id="text4120"
+         style="fill:#d3bc5f;stroke:#786721">
         <tspan
-           id="tspan4118">Amyloplast</tspan>
+           id="tspan4118"
+           style="fill:#d3bc5f;stroke:#786721">Amyloplast</tspan>
       </text>
     </g>
     <g
-       transform="translate(233.17365,-241.38687)"
+       transform="matrix(0.94859755,0,0,0.93078518,253.48128,-208.91538)"
        class="group_component"
        inkscape:label="vacuole_group"
-       id="vacuole_group">
+       id="vacuole_group"
+       style="stroke:#c83737">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle4010"
+         style="fill:#554400;fill-opacity:1;stroke:#c83737;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="vacuole"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="vacuole" />
       <text
          id="text4134"
-         x="181"
-         y="477">
+         x="174.67485"
+         y="479.14871"
+         style="fill:#806600;stroke:#c83737">
         <tspan
-           id="tspan4132">Vacuole</tspan>
+           id="tspan4132"
+           style="fill:#806600;stroke:#c83737">Vacuole</tspan>
       </text>
     </g>
     <g
        id="lysosome_group"
        inkscape:label="lysosome_group"
        class="group_component"
-       transform="matrix(0.74566387,0,0,0.72802089,371.21271,-203.90484)">
+       transform="matrix(0.70733492,0,0,0.67763105,380.40023,-168.76235)"
+       style="fill:#f6ffd5;stroke:#aad400">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="lysosome"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle4014"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="lysosome"
+         style="fill:#f6ffd5;fill-opacity:1;stroke:#aad400;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="485.24149"
          x="168.63565"
-         id="text4140">
+         id="text4140"
+         style="fill:#f6ffd5;stroke:#aad400">
         <tspan
-           id="tspan4138">Lysosome</tspan>
+           id="tspan4138"
+           style="fill:#f6ffd5;stroke:#aad400">Lysosome</tspan>
       </text>
     </g>
     <g
-       transform="translate(420.16651,-388.08325)"
+       transform="matrix(0.94859755,0,0,0.93078518,426.83769,-340.19288)"
        class="group_component"
        inkscape:label="mitochondrion_group"
-       id="mitochondrion_group">
+       id="mitochondrion_group"
+       style="fill:#ffdd55;stroke:#d4aa00">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle4018"
+         style="fill:#ffdd55;fill-opacity:1;stroke:#d4aa00;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="mitochondrion"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="mitochondrion" />
       <text
          id="text4148"
          x="158"
-         y="484">
+         y="484"
+         style="fill:#ffdd55;stroke:#d4aa00">
         <tspan
-           id="tspan4146">Mitochondrion</tspan>
+           id="tspan4146"
+           style="fill:#ffdd55;stroke:#d4aa00">Mitochondrion</tspan>
       </text>
     </g>
     <g
        id="plastid_group"
        inkscape:label="plastid_group"
        class="group_component"
-       transform="translate(516.12191,-298.07315)">
+       transform="matrix(0.94859755,0,0,0.93078518,517.86075,-256.41282)"
+       style="fill:#deaa87;stroke:#a05a2c">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="plastid"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle4022"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="plastid"
+         style="fill:#deaa87;fill-opacity:1;stroke:#a05a2c;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="480"
          x="181"
-         id="text4154">
+         id="text4154"
+         style="fill:#deaa87;stroke:#a05a2c">
         <tspan
-           id="tspan4152">Plastid</tspan>
+           id="tspan4152"
+           style="fill:#deaa87;stroke:#a05a2c">Plastid</tspan>
       </text>
     </g>
     <g
-       transform="translate(399.97055,-250.74517)"
+       transform="matrix(0.94859755,0,0,0.93078518,407.67985,-212.36064)"
        class="group_component"
        inkscape:label="endoplasmic_reticulum_group"
-       id="endoplasmic_reticulum_group">
+       id="endoplasmic_reticulum_group"
+       style="fill:#d3bc5f;stroke:#504416">
       <circle
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="circle4026"
+         style="fill:#d3bc5f;fill-opacity:1;stroke:#504416;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="endoplasmic_reticulum"
          cx="199.5"
          cy="514.5"
          r="56.679771"
-         inkscape:label="endosome" />
+         inkscape:label="endoplasmic_reticulum" />
       <text
          id="text4160"
          x="134"
-         y="491">
+         y="491"
+         style="fill:#d3bc5f;stroke:#504416">
         <tspan
-           id="tspan4158">Endoplasmic reticulum</tspan>
+           id="tspan4158"
+           style="fill:#d3bc5f;stroke:#504416">Endoplasmic reticulum</tspan>
       </text>
     </g>
     <g
        id="golgi_apparatus_group"
        inkscape:label="golgi_apparatus_group"
        class="group_component"
-       transform="translate(325.2031,-143.92388)">
+       transform="matrix(0.94859755,0,0,0.93078518,336.75563,-112.93295)"
+       style="fill:#bcd35f;stroke:#677821">
       <circle
-         inkscape:label="endosome"
+         inkscape:label="golgi_apparatus"
          r="56.679771"
          cy="514.5"
          cx="199.5"
-         id="circle4030"
-         style="fill:#fff9f0;fill-opacity:1;stroke:#ff7f2a;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         id="golgi_apparatus"
+         style="fill:#bcd35f;fill-opacity:1;stroke:#677821;stroke-width:0.6404494;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <text
          y="491"
          x="151"
-         id="text4166">
+         id="text4166"
+         style="fill:#bcd35f;stroke:#677821">
         <tspan
-           id="tspan4164">Golgi apparatus</tspan>
+           id="tspan4164"
+           style="fill:#bcd35f;stroke:#677821">Golgi apparatus</tspan>
       </text>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#eeaaff;fill-opacity:1;stroke:none"
-       x="706.79901"
-       y="454.18378"
-       id="text889"><tspan
+       style="font-style:normal;font-weight:normal;font-size:15.03438663px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#eeaaff;fill-opacity:1;stroke:none;stroke-width:0.93964916"
+       x="692.14526"
+       y="448.00293"
+       id="text889"
+       transform="scale(1.0095231,0.99056673)"><tspan
          sodipodi:role="line"
          id="tspan887"
-         x="706.79901"
-         y="454.18378"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#eeaaff">Nucleus</tspan></text>
+         x="692.14526"
+         y="448.00293"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.52865505px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#eeaaff;stroke-width:0.93964916">Nucleus</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#deaa87;fill-opacity:1;stroke:none"
-       x="343.6741"
-       y="368.90454"
-       id="text893"><tspan
+       style="font-style:normal;font-weight:normal;font-size:15.03438663px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#deaa87;fill-opacity:1;stroke:none;stroke-width:0.93964916"
+       x="350.93524"
+       y="367.87036"
+       id="text893"
+       transform="scale(1.0095231,0.99056673)"><tspan
          sodipodi:role="line"
          id="tspan891"
-         x="343.6741"
-         y="368.90454"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#deaa87">Endosome</tspan></text>
+         x="350.93524"
+         y="367.87036"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.52865505px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#deaa87;stroke-width:0.93964916">Endosome</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="448.81622"
-       y="52.686291"
-       id="text907"><tspan
+       style="font-style:normal;font-weight:normal;font-size:15.03438663px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93964916"
+       x="449.73196"
+       y="70.736168"
+       id="text907"
+       transform="scale(1.0095231,0.99056673)"><tspan
          sodipodi:role="line"
          id="tspan905"
-         x="448.81622"
-         y="52.686291"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#87de87">Cytoplasm</tspan></text>
+         x="449.73196"
+         y="70.736168"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.52865505px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#87de87;stroke-width:0.93964916">Cytoplasm</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="4"
-       y="621"
-       id="text911"><tspan
+       style="font-style:normal;font-weight:normal;font-size:15.03438663px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93964916"
+       x="31.760698"
+       y="604.75128"
+       id="text911"
+       transform="scale(1.0095231,0.99056673)"><tspan
          sodipodi:role="line"
          id="tspan909"
-         x="4"
-         y="621"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#918a6f">Extracellular</tspan></text>
+         x="31.760698"
+         y="604.75128"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.52865505px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';fill:#918a6f;stroke-width:0.93964916">Extracellular</tspan></text>
   </g>
 </svg>

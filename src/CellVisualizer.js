@@ -6,6 +6,7 @@ const d3 = require("d3");
 var colorMapper = {};
 var colorNo = 0;
 var globalCellRef = undefined;
+var GlobalCell = {};
 
 const width = window.innerHeight - 200;
 const height = window.innerHeight - 200;
@@ -236,14 +237,12 @@ export default class CellVisualizer extends Component {
       }
     });
 
-    let arrayOrganelles = {};
     Object.keys(listOrganelles).forEach(organelle => {
       this.cell[organelle] = listOrganelles[organelle];
     })
 
     console.log(organelles);
     console.log(listOrganelles);
-    console.log(arrayOrganelles);
     console.log("end here");
 
 
@@ -283,6 +282,8 @@ export default class CellVisualizer extends Component {
 
 
     console.log("THIS.CELL", this.cell);
+    GlobalCell = this.cell;
+    console.log("this is global cell : ", GlobalCell);
 
     this.svg = d3
       .select("#svg_wrapper")
@@ -291,19 +292,37 @@ export default class CellVisualizer extends Component {
       .attr("width", width)
       .attr("height", height);
 
-    let DefaultOrgannells = new Set(
-      Object.keys(this.cell).map(key => {
-        if (defaultOrganelleNames.includes(key))
-          return { key, ...this.cell[key] };
-      })
-    );
+    let DefaultOrgannells = new Set([]);
+    Object.keys(this.cell).map(key => {
+      if (defaultOrganelleNames.includes(key))
+        //return { key, ...this.cell[key] };
+        DefaultOrgannells.add(GlobalCell[key].organelle);
+    })
 
-    let SimulationOrganelles = new Set(
-      Object.keys(this.cell).map(key => {
-        if (!defaultOrganelleNames.includes(key))
-          return { key, ...this.cell[key] };
-      })
-    );
+    // let DefaultOrgannells = new Set(
+    //   Object.keys(this.cell).map(key => {
+    //     if (defaultOrganelleNames.includes(key))
+    //       return { key, ...this.cell[key] };
+    //   })
+    // );
+
+    console.log("This are the deafult organelles : \n", Array.from(DefaultOrgannells));
+
+    let SimulationOrganelles = new Set([]);
+    Object.keys(this.cell).map(key => {
+      if (!defaultOrganelleNames.includes(key))
+        //return { key, ...this.cell[key] };
+        SimulationOrganelles.add(GlobalCell[key].organelle);
+    })
+
+    // let SimulationOrganelles = new Set(
+    //   Object.keys(this.cell).map(key => {
+    //     if (!defaultOrganelleNames.includes(key))
+    //       return { key, ...this.cell[key] };
+    //   })
+    // );
+
+    console.log("This are the deafult organelles : \n", Array.from(SimulationOrganelles));
 
     const staticGNodes = this.svg
       .selectAll("g.static")
@@ -316,20 +335,21 @@ export default class CellVisualizer extends Component {
     const cell = this.cell;
     staticGNodes.each(function (g, i) {
       Object.keys(cell).map(key => {
-        if (cell[key].group === g.group) {
+        if (cell[key].organelle.group === g.group) {
           const organelle = { key, ...cell[key] };
           d3.select(this)
             .append("circle")
             .attr("id", key)
             .attr("class", organelle.isMembrane ? "membrane" : "")
-            .attr("r", organelle.radius);
+            .attr("r", organelle.organelle.rmax);
         }
       });
     });
 
     const gnodes = this.svg
       .selectAll("g.gnode")
-      .data(Array.from(SimulationGroups).map(group => ({ group })))
+      //.data(Array.from(SimulationOrganelles).map(group => ({ group })))
+      .data(Array.from(SimulationOrganelles))
       .enter()
       .append("g")
       .attr("class", "group_component")
@@ -337,13 +357,13 @@ export default class CellVisualizer extends Component {
 
     gnodes.each(function (g, i) {
       Object.keys(cell).map(key => {
-        if (cell[key].group === g.group) {
+        if (cell[key].organelle.group === g.group) {
           const organelle = { key, ...cell[key] };
           d3.select(this)
             .append("circle")
             .attr("id", key)
             .attr("class", organelle.isMembrane ? "membrane" : "")
-            .attr("r", organelle.radius);
+            .attr("r", organelle.organelle.rmax);
         }
       });
     });
@@ -364,7 +384,7 @@ export default class CellVisualizer extends Component {
         "tick",
         function () {
           const cell = this.cell;
-          const cytoplasm = cell["cytoplasm"];
+          const cytoplasm = cell["cytoplasm"].organelle;
           const groupMapping = this.props.groupMapping;
           gnodes.each(function (d) {
             const result = constraintInsideCell(
@@ -425,7 +445,13 @@ export default class CellVisualizer extends Component {
           .strength(0.1)
           .x(function (d) {
             if (d.location != "extracellular") {
-              return globalCellRef[d.location].cx;
+              //console.log(d.location);
+              //console.log("Gheck: ", d.location, globalCellRef[d.location].organelle);
+              if (d.location.includes("_membrane") && d.location != "plasma_membrane") {
+                return globalCellRef[d.location.replace("_membrane", "")].membrane.cx;
+              } else {
+                return globalCellRef[d.location].organelle.cx;
+              }
             }
             return width / 2;
           })
@@ -437,7 +463,11 @@ export default class CellVisualizer extends Component {
           .strength(0.1)
           .y(function (d) {
             if (d.location != "extracellular") {
-              return globalCellRef[d.location].cy;
+              if (d.location.includes("_membrane") && d.location != "plasma_membrane") {
+                return globalCellRef[d.location.replace("_membrane", "")].membrane.cx;
+              } else {
+                return globalCellRef[d.location].organelle.cx;
+              }
             }
             return height / 2;
           })
@@ -507,8 +537,17 @@ export default class CellVisualizer extends Component {
   onTick() {
     // Calculate the node's new position after applying the constraints
     const calculateNewPosition = node => {
-      const component = this.cell[node.location];
-      switch (node.location) {
+      console.log(node.location);
+      let reference = undefined;
+      if (node.location.includes("_membrane") && node.location != "plasma_membrane") {
+        reference = node.location.replace("_membrane", "");
+      } else {
+        reference = node.location;
+      }
+
+      //Need reference for extracellular, no value in cell for extraclleular like this this.cell["extrcellular"]
+      const component = this.cell[reference].organelle;
+      switch (reference) {
         case "cytoplasm":
           const components = Object.keys(this.cell)
             .filter(
@@ -516,15 +555,16 @@ export default class CellVisualizer extends Component {
             )
             .filter(
               //additional filter for restricting cytoplasmic nodes from entering organelle membranes
-              orgwithMembrane =>
-                !this.props.groupMapping
-                  .map(obj => obj.component)
-                  .includes(orgwithMembrane)
+              // orgwithMembrane =>
+              //   !this.props.groupMapping
+              //     .map(obj => obj.component)
+              //     .includes(orgwithMembrane)
+              orgwithMembrane => !Object.keys(this.cell).filter(name => this.cell[name].membrane != {})
             )
-            .map(k => this.cell[k]);
+            .map(k => this.cell[k].organelle);
           return constraintInsideCell(node.x, node.y, component, components);
         case "extracellular":
-          return constraintOutsideCell(node.x, node.y, this.cell);
+          return constraintOutsideCell(node.x, node.y, Object.values(this.cell).map(values => values.organelle));
         default:
           //const mycomp = Object.keys(this.cell);
           return constraintInsideCell(node.x, node.y, component);

@@ -8,5 +8,7 @@ COPY . ./
 
 RUN npm install
 RUN npm run-script build
-RUN npm install pm2 -g
-CMD ["pm2-runtime", "app.js"]
+
+FROM nginx:alpine
+COPY --from=builder /root/react/dist /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]

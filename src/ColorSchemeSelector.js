@@ -178,6 +178,7 @@ export class ColorSchemeSelector extends React.Component {
       const cs =
         colorScheme.find(s => s.label === n[attribute]) ||
         colorScheme.find(s => s.label === "Unlocalized");
+      console.log(n);
       return cs.color;
     };
 

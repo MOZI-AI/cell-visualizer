@@ -484,10 +484,13 @@ export default class CellVisualizer extends Component {
       );
     });
 
-    d3.select("#mitochondrion").on("click", function (d) {
-      // console.log(d.id);
-      this.props.onOrganelleSelected("mitochondrion");
-    }.bind(this));
+    d3.select("#mitochondrion").on(
+      "click",
+      function(d) {
+        // console.log(d.id);
+        this.props.onOrganelleSelected("mitochondrion");
+      }.bind(this)
+    );
 
     d3.select("#nucleus").on("click", function (d) {
       // console.log(d.id);
@@ -600,7 +603,6 @@ export default class CellVisualizer extends Component {
             .attr("x", result.x) // set x position of left side of text
             .attr("y", result.y) // set y position of bottom of text
             .attr("dy", "-20") // set offset y position
-            .attr("text-anchor", "middle") // set anchor y justification
             .attr("id", "node" + i)
             .text(d.name);
         })

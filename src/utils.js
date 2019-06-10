@@ -605,11 +605,13 @@ export const GroupMapping = [
     membrane: "symbiont-containing_vacuole_membrane"
   },
   { component: "lysosome", membrane: "lysosomal_membrane" },
+  { component: "centrosome", membrane: "centrosome_membrane" },
   { component: "omegasome", membrane: "omegasome_membrane" },
   { component: "glycosome", membrane: "glycosome_membrane" },
   { component: "chitosome", membrane: "chitosome_membrane" },
   { component: "amphisome", membrane: "aamphisome_membrane" },
   { component: "esterosome", membrane: "esterosome_membrane" },
+  { component: "glyoxysome", membrane: "glyoxysome_membrane" },
   { component: "melanosome", membrane: "melanosome_membrane" },
   { component: "peroxisome", membrane: "peroxisomal_membrane" },
   { component: "reservosome", membrane: "reservosome_membrane" },

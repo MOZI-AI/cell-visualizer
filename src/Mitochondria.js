@@ -5,11 +5,16 @@ export default class Mitochondria extends React.Component {
   constructor(props) {
     super(props);
     this.link = undefined;
+    this.node = undefined;
     this.state = {};
   }
 
   componentDidMount() {
     this.initMitochondria();
+  }
+
+  componentDidUpdate() {
+    if (this.node) this.node.attr("fill", d => this.props.colorSelector(d));
   }
 
   getPointsOnPath(path, components) {
@@ -19,37 +24,27 @@ export default class Mitochondria extends React.Component {
 
     for (let i = 0; i < numberOfNodes; i++) {
       let { x, y } = path.getPointAtLength((pathLength * i) / numberOfNodes);
-      const { id, name, description, originalLocation: location } = components[
-        i
-      ];
-
       let pos = {
         x,
         y,
-        id,
-        name,
-        description,
-        location
+        ...components[i]
       };
-
       pts.push(pos);
     }
 
     return pts;
   }
 
-  placeNodes(svg, nodes, color) {
-    svg
+  placeNodes(svg, nodes) {
+    this.node = svg
       .append("g")
       .attr("class", "nodes")
       .selectAll("circle")
       .data(nodes)
       .enter()
       .append("circle")
+      .attr("class", "node")
       .attr("r", 5)
-      .attr("fill", color)
-      .attr("stroke", "black")
-      .attr("stroke-width", "1")
       .attr("cx", function(d) {
         return d.x;
       })
@@ -72,7 +67,6 @@ export default class Mitochondria extends React.Component {
             : d.name.length) * 12;
         svg
           .append("rect")
-          .style("fill", "hsla(214, 89%, 14%, .7)")
           .attr("x", mouse[0] - characterLength / 2)
           .attr("rx", 5)
           .attr("y", mouse[1] - 40)
@@ -82,20 +76,18 @@ export default class Mitochondria extends React.Component {
             return characterLength;
           })
           .attr("height", 30)
-          .attr("id", "node" + i);
+          .attr("id", "node" + i)
+          .classed("tooltip-wrapper", true);
 
         // Text description
         d3.select("svg#mitochondrion")
           .append("text")
-          .style("font-size", "16px")
-          .style("font-weight", "600")
-          .style("fill", "white")
           .attr("x", mouse[0])
           .attr("y", mouse[1])
           .attr("dy", "-20")
-          .attr("text-anchor", "middle")
           .attr("id", "node" + i)
-          .text(d.name);
+          .text(d.name)
+          .classed("tooltip", true);
       })
       .on("mouseout", function(d, i) {
         d3.selectAll("#node" + i).remove(); // Removes the on-hover information
@@ -103,7 +95,7 @@ export default class Mitochondria extends React.Component {
   }
 
   initMitochondria() {
-    let newPoints = [];   // array of new locations within organelle
+    let newPoints = []; // array of new locations within organelle
     let nodesInOrganelle = [];
     let linksInOrganelle = [];
 
@@ -132,17 +124,18 @@ export default class Mitochondria extends React.Component {
 
       let path = d3.select(`#${organelleMapping[part]}`).node();
       let points = this.getPointsOnPath(path, components);
-      this.placeNodes(svg, points, colors[i]);
+
       newPoints.push(...points);
       nodesInOrganelle.push(...components);
     });
+    this.placeNodes(svg, newPoints);
 
     linksInOrganelle = this.props.data.links.filter(link => {
       let source = nodesInOrganelle.find(node => node.id == link.source.id);
       let target = nodesInOrganelle.find(node => node.id == link.target.id);
 
       if (source != undefined && target != undefined) {
-        return source.location == target.location;
+        return source.originalLocation == target.originalLocation;
       }
     });
 
@@ -160,7 +153,6 @@ export default class Mitochondria extends React.Component {
         return d.id;
       })
       .each(function(d) {
-        console.log("new points:", newPoints);
         const sourcePosition = newPoints.find(node => node.id == d.source.id);
         const targetPosition = newPoints.find(node => node.id == d.target.id);
 
@@ -177,11 +169,10 @@ export default class Mitochondria extends React.Component {
 
     return (
       <div>
-        <button onClick={() => onOrganelleSelected(undefined)}>CLOSE</button>
         <svg
           id="mitochondrion"
-          width="700"
-          height="600"
+          width={window.innerHeight}
+          height={window.innerHeight - 120}
           viewBox="0 0 778 796"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

@@ -23,6 +23,10 @@ div.tooltip {
   border: none;
 }
 
+.ant-upload.ant-upload-drag button {
+  width: 100%;
+}
+
 .ant-upload.ant-upload-drag .ant-upload.ant-upload-btn {
   padding: 0;
   margin: 0;
@@ -63,15 +67,16 @@ div.tooltip {
 .landing-page-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
   height: 100vh;
-  padding-bottom: 90px;
+  padding-bottom: 250px;
+  padding-right: 150px;
 }
 
 .landing-page-wrapper h1 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .top-bar-wrapper {
@@ -90,6 +95,7 @@ div.tooltip {
   justify-content: center;
   border-radius: 10px;
   background: #1890ff;
+  margin-bottom: 5px;
 }
 
 .top-bar-wrapper .menu .ant-upload.ant-upload-drag {
@@ -163,7 +169,7 @@ div.tooltip {
   height: 100vh;
   top: 0;
   left: 0;
-  background: #bae7ffaa;
+  background: #ffffffdd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,6 +184,7 @@ div.tooltip {
 
 .tooltip {
   fill: #fff;
+  text-anchor: middle;
 }
 
 .tooltip-wrapper {
@@ -237,8 +244,9 @@ div.tooltip {
 
 .color-scheme-selector {
   position: absolute;
-  top: 90px;
+  top: 75px;
   left: 15px;
+  padding-left: 0;
 }
 
 .hidden.group_component,
@@ -247,4 +255,8 @@ div.tooltip {
   opacity: 0;
   fill-opacity: 0;
   stroke-opacity: 0;
+}
+
+.navigation {
+  margin-bottom: 30px;
 }

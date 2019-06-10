@@ -26,6 +26,7 @@ import "antd/dist/antd.css";
 import "./style.css";
 import { ColorSchemeSelector } from "./ColorSchemeSelector";
 import Mitochondria from "./Mitochondria";
+import Nucleus from "./Nucleus";
 
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -77,7 +78,7 @@ export class App extends Component {
   handleFileUploaded(d) {
     let data = typeof d === "string" ? JSON.parse(d) : d;
     GraphSchema.isValid(data).then(
-      function(valid) {
+      function (valid) {
         if (valid) {
           const d = this.generalizeLocations(data, CellLocations);
           const organelleFilter = d.nodes.reduce((a, c) => {
@@ -96,7 +97,7 @@ export class App extends Component {
           return message.error("Invalid JSON file.");
         }
         GraphSchema.isValid(data).then(
-          function(valid) {
+          function (valid) {
             if (valid) {
               const d = this.generalizeLocations(data, CellLocations);
               const organelleFilter = d.nodes.reduce((a, c) => {
@@ -253,6 +254,20 @@ export class App extends Component {
           }
         >
           <Mitochondria
+            selectedOrganelle={this.state.selectedOrganelle}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            data={this.state.data}
+            toggleDisplay={this.toggleDisplay}
+          />
+        </div>
+
+        <div
+          className={
+            this.isOrganelleShown("nucleus") ? "isActive" : "isNotActive"
+          }
+        >
+          <Nucleus
             selectedOrganelle={this.state.selectedOrganelle}
             onOrganelleSelected={this.handleOrganelleSelected}
             onNodeSelected={this.handleNodeSelected}
@@ -471,8 +486,8 @@ export class App extends Component {
             </Drawer>
           </Fragment>
         ) : (
-          this.renderLandingPage()
-        )}
+            this.renderLandingPage()
+          )}
         {this.state.loading && this.renderLoader()}
       </Fragment>
     );

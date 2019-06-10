@@ -79,14 +79,14 @@ const constraintOutsideCell = (x, y, cell) => {
       x < unlocalizedMargin
         ? unlocalizedMargin
         : x > width - unlocalizedMargin
-        ? width - unlocalizedMargin
-        : x,
+          ? width - unlocalizedMargin
+          : x,
     y:
       y < unlocalizedMargin
         ? unlocalizedMargin
         : y > height - unlocalizedMargin
-        ? height - unlocalizedMargin
-        : y
+          ? height - unlocalizedMargin
+          : y
   };
 };
 
@@ -115,21 +115,21 @@ export default class CellVisualizer extends Component {
         k => !organelleFilter[k]
       );
       if (this.groupComponents)
-        this.groupComponents.attr("class", function(g) {
+        this.groupComponents.attr("class", function (g) {
           const c = this.getAttribute("class")
             .replace(/hidden/g, "")
             .trim();
           return hiddenOrganelles.includes(g.id) ? `hidden ${c}` : c;
         });
       if (this.node)
-        this.node.attr("class", function(n) {
+        this.node.attr("class", function (n) {
           const c = this.getAttribute("class")
             .replace(/hidden/g, "")
             .trim();
           return hiddenOrganelles.includes(n.location) ? `hidden ${c}` : c;
         });
       if (this.link)
-        this.link.attr("class", function(l) {
+        this.link.attr("class", function (l) {
           const c = this.getAttribute("class")
             .replace(/hidden/g, "")
             .trim();
@@ -254,7 +254,7 @@ export default class CellVisualizer extends Component {
       this.cell[organelle] = {
         cx: viewportCenter.x,
         cy: viewportCenter.y,
-        rmax: function() {
+        rmax: function () {
           const nodes = this.props.data.nodes.filter(
             n => n.location === organelle
           ).length;
@@ -279,7 +279,7 @@ export default class CellVisualizer extends Component {
       .attr("class", "group_component")
       .attr(
         "id",
-        function(d) {
+        function (d) {
           return d.location + "_group";
         }.bind(this)
       );
@@ -289,7 +289,7 @@ export default class CellVisualizer extends Component {
     const visualiser = this;
     const groupMapping = this.props.groupMapping;
     const nodes = this.props.data.nodes;
-    this.groupComponents.each(function(d) {
+    this.groupComponents.each(function (d) {
       const mappings = groupMapping.filter(m => m.component === d.location);
       mappings.forEach(m => {
         if (m.membrane.trim()) {
@@ -343,11 +343,11 @@ export default class CellVisualizer extends Component {
     this.organnelSimulation
       .on(
         "tick",
-        function() {
+        function () {
           const cell = this.cell;
           const cytoplasm = cell["cytoplasm"];
           const groupMapping = this.props.groupMapping;
-          this.groupComponents.each(function(d) {
+          this.groupComponents.each(function (d) {
             const result = constraintInsideCell(
               d.x,
               d.y,
@@ -356,7 +356,7 @@ export default class CellVisualizer extends Component {
               organelleRadius
             );
 
-            d3.select(this).attr("transform", function(d, i) {
+            d3.select(this).attr("transform", function (d, i) {
               return "translate(" + result.x + "," + result.y + ")";
             });
             cell[d.location].cx = result.x;
@@ -370,7 +370,7 @@ export default class CellVisualizer extends Component {
       )
       .on(
         "end",
-        function() {
+        function () {
           this.props.updateLoadingStatus(false);
           this.props.data && this.initGraph();
         }.bind(this)
@@ -405,7 +405,7 @@ export default class CellVisualizer extends Component {
         d3
           .forceX()
           .strength(0.3)
-          .x(function(d) {
+          .x(function (d) {
             const location = d.location;
             if (
               location &&
@@ -422,7 +422,7 @@ export default class CellVisualizer extends Component {
         d3
           .forceY()
           .strength(0.3)
-          .y(function(d) {
+          .y(function (d) {
             const location = d.location;
             if (
               location &&
@@ -443,7 +443,7 @@ export default class CellVisualizer extends Component {
       .append("line")
       .attr("class", "edge")
 
-      .attr("id", function(d) {
+      .attr("id", function (d) {
         return d.id;
       });
 
@@ -452,7 +452,7 @@ export default class CellVisualizer extends Component {
       .data(this.props.data.nodes)
       .enter()
       .append("g")
-      .attr("id", function(d) {
+      .attr("id", function (d) {
         return d.id + "_g";
       });
 
@@ -466,13 +466,13 @@ export default class CellVisualizer extends Component {
       .attr("fill", d => this.props.colorSelector(d))
       .on(
         "click",
-        function(d, i) {
+        function (d, i) {
           this.props.onNodeSelected(d);
         }.bind(this)
       )
       .call(this.drag(this.simulation));
 
-    d3.select("#download").on("click", function() {
+    d3.select("#download").on("click", function () {
       // Get the d3js SVG element and save using saveSvgAsPng.js
       saveSvgAsPng.saveSvgAsPng(
         document.getElementById("svg"),
@@ -487,6 +487,11 @@ export default class CellVisualizer extends Component {
     d3.select("#mitochondrion").on("click", function (d) {
       // console.log(d.id);
       this.props.onOrganelleSelected("mitochondrion");
+    }.bind(this));
+
+    d3.select("#nucleus").on("click", function (d) {
+      // console.log(d.id);
+      this.props.onOrganelleSelected("nucleus");
     }.bind(this));
 
     this.simulation.on("tick", this.onTick.bind(this));
@@ -530,7 +535,7 @@ export default class CellVisualizer extends Component {
     let link = this.link;
     let props = this.props;
 
-    this.node.each(function(d) {
+    this.node.each(function (d) {
       const result = calculateNewPosition(d);
 
       // Use character length to determine hover information
@@ -538,15 +543,15 @@ export default class CellVisualizer extends Component {
         (d.name.length < 6
           ? d.name.length + 2
           : d.name.length > 12
-          ? d.name.length - 2
-          : d.name.length) * 12;
+            ? d.name.length - 2
+            : d.name.length) * 12;
 
       d3.select(this)
         .attr("cx", result.x)
         .attr("fixed", false)
         .attr("cy", result.y)
 
-        .on("mouseover", function(d, i) {
+        .on("mouseover", function (d, i) {
           // Add the text background
           const linkedByIndex = {};
           props.data.links.forEach(d => {
@@ -561,7 +566,7 @@ export default class CellVisualizer extends Component {
               a.index === b.index
             );
           }
-          node.style("stroke-opacity", function(o) {
+          node.style("stroke-opacity", function (o) {
             const thisOpacity = isConnected(d, o) ? 1 : 0.1;
             this.setAttribute("fill-opacity", thisOpacity);
             return thisOpacity;
@@ -576,12 +581,12 @@ export default class CellVisualizer extends Component {
             .classed("tooltip-wrapper", true)
             .attr("rx", 5)
             .attr("ry", 5)
-            .attr("x", function() {
+            .attr("x", function () {
               // Adjust the center of the rectangle
               return result.x - characterLength / 2;
             }) // set x position of left side of rectangle
             .attr("y", result.y - 40) // set y position of top of rectangle
-            .attr("width", function() {
+            .attr("width", function () {
               // The function returns width of the background based on the length of characters
               return characterLength;
             })
@@ -599,9 +604,9 @@ export default class CellVisualizer extends Component {
             .attr("id", "node" + i)
             .text(d.name);
         })
-        .on("mouseout", function(d, i) {
+        .on("mouseout", function (d, i) {
           d3.selectAll("#node" + i).remove(); // Removes the on-hover information
-          node.style("stroke-opacity", function(o) {
+          node.style("stroke-opacity", function (o) {
             this.setAttribute("fill-opacity", 1);
             return 1;
           });
@@ -609,7 +614,7 @@ export default class CellVisualizer extends Component {
         });
     });
     // Update link
-    this.link.each(function(d) {
+    this.link.each(function (d) {
       const sourcePosition = calculateNewPosition(d.source);
       const targetPosition = calculateNewPosition(d.target);
       d3.select(this)

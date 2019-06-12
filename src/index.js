@@ -35,7 +35,7 @@ export class App extends Component {
       visualizerAdoptedData: undefined,
       fileName: undefined,
       selectedNode: undefined,
-      selectedOrganelle: "mitochondrion",
+      selectedOrganelle: null,
       loading: false,
       colorScheme: null,
       colorSelector: n => "#000",

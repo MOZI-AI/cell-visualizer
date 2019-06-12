@@ -1,8 +1,4 @@
-.isActive {
-  display: initial;
-}
-
-.isNotActive {
+.hidden {
   display: none;
 }
 

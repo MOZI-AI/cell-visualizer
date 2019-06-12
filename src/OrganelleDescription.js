@@ -4,11 +4,11 @@ import { Button, Typography } from "antd";
 export default function OrganelleDescription(props) {
   const { selectedNode, onNodeSelected } = props;
   const urlRegex = /(https?:\/\/[^ ]*)/;
-  const url =
-    selectedNode && selectedNode.definition
-      ? selectedNode.definition.match(urlRegex)[0]
-      : null;
-  console.log(selectedNode);
+  console.log(
+    selectedNode,
+    selectedNode && selectedNode.definition.match(urlRegex)
+  );
+  const urls = (selectedNode && selectedNode.definition.match(urlRegex)) || [];
 
   return selectedNode ? (
     <div className="description-wrapper">
@@ -25,9 +25,9 @@ export default function OrganelleDescription(props) {
         <Button type="link" ghost onClick={() => onNodeSelected(undefined)}>
           Close
         </Button>
-        {url && (
+        {urls.length > 0 && (
           <Button type="primary">
-            <a href={url} target="blank">
+            <a href={urls[0]} target="blank">
               Learn more
             </a>
           </Button>

@@ -43,7 +43,7 @@ export class App extends Component {
       toolbarCollapsed: false,
       drawerOpened: false,
       nodeLabelVisibility: n => false,
-      nodeLabelContent: n => "g"
+      nodeLabelContent: n => n.name
     };
 
     this.handleNodeSelected = this.handleNodeSelected.bind(this);

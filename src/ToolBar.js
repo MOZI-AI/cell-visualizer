@@ -19,7 +19,7 @@ export default function ToolBar(props) {
           <Fragment>
             <FileUpload title={fileName} onFileUploaded={onFileUploaded} />
             <Button.Group size="large">
-              <Button type="primary" icon="filter" onClick={onDrawerOpened} />
+              <Button type="primary" icon="setting" onClick={onDrawerOpened} />
             </Button.Group>
             <AutoComplete
               dataSource={graphData.nodes.map(d => d.id)}

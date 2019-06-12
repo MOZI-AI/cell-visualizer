@@ -18,6 +18,7 @@ div.tooltip {
 .ant-upload.ant-upload-drag {
   border: none;
   height: auto;
+  border-radius: 10px;
 }
 
 .ant-upload.ant-upload-drag button {

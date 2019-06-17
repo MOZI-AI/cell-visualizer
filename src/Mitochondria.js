@@ -27,9 +27,6 @@ export default class Mitochondria extends React.Component {
       .then(data => {
         const svgElement = data.documentElement;
         svgElement.setAttribute("id", "svg");
-        svgElement.setAttribute("width", WIDTH);
-        svgElement.setAttribute("height", HEIGHT);
-        svgElement.setAttribute("viewBox", `-90 -60 ${HEIGHT} ${HEIGHT}`);
         d3.select("#svg_wrapper")
           .node()
           .append(svgElement);

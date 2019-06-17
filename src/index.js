@@ -30,6 +30,7 @@ import { ColorSchemeSelector } from "./ColorSchemeSelector";
 import * as bg from "./bg.svg";
 import Mitochondria from "./Mitochondria";
 import Nucleus from "./Nucleus";
+import GolgiApparatus from "./GolgiApparatus";
 import posed from "react-pose";
 
 const Box = posed.div({
@@ -197,6 +198,20 @@ export class App extends Component {
           }
         >
           <Nucleus
+            selectedOrganelle={this.state.selectedOrganelle}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            data={this.state.data}
+            toggleDisplay={this.toggleDisplay}
+          />
+        </div>
+
+        <div
+          className={
+            this.isOrganelleShown("golgiApparatus") ? "isActive" : "isNotActive"
+          }
+        >
+          <GolgiApparatus
             selectedOrganelle={this.state.selectedOrganelle}
             onOrganelleSelected={this.handleOrganelleSelected}
             onNodeSelected={this.handleNodeSelected}

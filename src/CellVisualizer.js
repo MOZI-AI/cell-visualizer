@@ -486,7 +486,7 @@ export default class CellVisualizer extends Component {
 
     d3.select("#mitochondrion").on(
       "click",
-      function(d) {
+      function (d) {
         // console.log(d.id);
         this.props.onOrganelleSelected("mitochondrion");
       }.bind(this)
@@ -498,7 +498,14 @@ export default class CellVisualizer extends Component {
     }.bind(this));
 
     this.simulation.on("tick", this.onTick.bind(this));
+
+    d3.select("#golgi_apparatus").on("click", function (d) {
+      this.props.onOrganelleSelected("golgiApparatus");
+    }.bind(this));
+
+    this.simulation.on("tick", this.onTick.bind(this));
   }
+
 
   onTick() {
     // Calculate the node's new position after applying the constraints

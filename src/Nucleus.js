@@ -172,7 +172,7 @@ export default class Nucleus extends React.Component {
     nodeObject["outerMembrane_nodes"] = nodes;
     nodePostionList = [];
 
-    console.log(this.pathDetails);
+    //console.log(this.pathDetails);
 
     nodes = nodesonInnerCircle == 0 ? [] : d3.range(nodesonInnerCircle).map(
       function (d, i) {
@@ -205,72 +205,8 @@ export default class Nucleus extends React.Component {
     return nodeObject;
   }
 
-  placeNodes(svg, nodes, color) {
-    svg
-      .append("g")
-      .attr("class", "nodes")
-      .selectAll("circle")
-      .data(nodes)
-      .enter()
-      .append("circle")
-      .attr("r", 5)
-      .attr("fill", color)
-      .attr("stroke", "black")
-      .attr("strokeWidth", "1")
-      .attr("cx", function (d) {
-        return d.x;
-      })
-      .attr("cy", function (d) {
-        return d.y;
-      })
-      .on(
-        "click",
-        function (d, i) {
-          this.props.onNodeSelected(d);
-        }.bind(this)
-      )
-      .on("mouseover", function (d, i) {
-        let mouse = d3.mouse(this);
-        let characterLength =
-          (d.name.length < 6
-            ? d.name.length + 2
-            : d.name.length > 12
-              ? d.name.length - 2
-              : d.name.length) * 12;
-        svg
-          .append("rect")
-          .style("fill", "hsla(214, 89%, 14%, .7)")
-          .attr("x", mouse[0] - characterLength / 2)
-          .attr("rx", 5)
-          .attr("y", mouse[1] - 40)
-          .attr("ry", 5)
-          .attr("width", function () {
-            // Width is based on the length of word
-            return characterLength;
-          })
-          .attr("height", 30)
-          .attr("id", "node" + i);
-
-        // Text description
-        d3.select("svg#mitochondrion")
-          .append("text")
-          .style("font-size", "16px")
-          .style("font-weight", "600")
-          .style("fill", "white")
-          .attr("x", mouse[0])
-          .attr("y", mouse[1])
-          .attr("dy", "-20")
-          .attr("text-anchor", "middle")
-          .attr("id", "node" + i)
-          .text(d.name);
-      })
-      .on("mouseout", function (d, i) {
-        d3.selectAll("#node" + i).remove(); // Removes the on-hover information
-      });
-  }
-
   initNucleus() {
-    this.svg = d3.select("#svg46");
+    this.svg = d3.select("#svgNucleus");
 
     var membranePaths = this.svg.selectAll(".membrane_path");
     var outMembranePaths = this.svg.selectAll(".outermembrane_path");
@@ -351,7 +287,7 @@ export default class Nucleus extends React.Component {
       }
     });
 
-    console.log("Node Mapping \n", nodeMapping);
+    //console.log("Node Mapping \n", nodeMapping);
 
     // console.log(this.props.data.nodes.filter(node => {
     //   return node.location.includes("nucleus") || node.originalLocation.includes("nucleoplasm");
@@ -447,7 +383,7 @@ export default class Nucleus extends React.Component {
             : d.name.length > 12
               ? d.name.length - 2
               : d.name.length) * 12;
-        d3.select("#svg46")
+        d3.select("#svgNucleus")
           .append("rect")
           .attr("x", mouse[0] - characterLength / 2)
           .attr("rx", 5)
@@ -462,7 +398,7 @@ export default class Nucleus extends React.Component {
           .classed("tooltip-wrapper", true);
 
         // Text description
-        d3.select("#svg46")
+        d3.select("#svgNucleus")
           .append("text")
           .attr("x", mouse[0])
           .attr("y", mouse[1])
@@ -484,8 +420,8 @@ export default class Nucleus extends React.Component {
     });
 
     nodeswithData = nodeswithData.slice(sizeArray[4]);
-    console.log("nodeswithdatasliced", nodeswithData);
-    console.log("simulationNodes", simulationNodes);
+    //console.log("nodeswithdatasliced", nodeswithData);
+    //console.log("simulationNodes", simulationNodes);
 
     for (let index = 0; index < nodeswithData.length; index++) {
       simulationNodes[index].group = nodeswithData[index].group;
@@ -538,7 +474,7 @@ export default class Nucleus extends React.Component {
             : d.name.length > 12
               ? d.name.length - 2
               : d.name.length) * 12;
-        d3.select("#svg46")
+        d3.select("#svgNucleus")
           .append("rect")
           .attr("x", mouse[0] - characterLength / 2)
           .attr("rx", 5)
@@ -553,7 +489,7 @@ export default class Nucleus extends React.Component {
           .classed("tooltip-wrapper", true);
 
         // Text description
-        d3.select("#svg46")
+        d3.select("#svgNucleus")
           .append("text")
           .attr("x", mouse[0])
           .attr("y", mouse[1])
@@ -605,7 +541,7 @@ export default class Nucleus extends React.Component {
           height="900"
           viewBox="0 0 284 280"
           version="1.1"
-          id="svg46"
+          id="svgNucleus"
           fill="none"
         >
           <path

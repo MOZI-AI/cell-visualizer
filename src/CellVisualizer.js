@@ -118,20 +118,21 @@ export default class CellVisualizer extends Component {
   }
 
   handleLabelChange() {
-    let visualiser = this;
+    const visualiser = this;
+    const { nodeLabelVisibility, nodeLabelContent } = this.props;
     this.nodeGroup &&
       this.nodeGroup.each(function(n) {
         d3.select(this)
           .selectAll("text")
           .remove();
-        if (visualiser.props.nodeLabelVisibility(n)) {
+        if (nodeLabelVisibility(n)) {
           const labelPosition = visualiser.calculateNewPosition(n);
           d3.select(this)
             .attr("class", "node-label")
             .append("text")
             .attr("x", labelPosition.x)
             .attr("y", labelPosition.y)
-            .text(n => visualiser.props.nodeLabelContent(n));
+            .text(n => nodeLabelContent(n));
         }
       });
   }
@@ -140,14 +141,14 @@ export default class CellVisualizer extends Component {
     if (!filters) return;
     const hiddenLocations = Object.keys(filters).filter(k => !filters[k]);
     const isHidden = l => hiddenLocations.includes(l);
-    this.groupComponents &&
+    if (this.node) {
       this.groupComponents.classed("hidden", g => isHidden(g.id));
-    this.node && this.node.classed("hidden", n => isHidden(n.location));
-    this.link &&
+      this.nodeGroup.classed("hidden", n => isHidden(n.location));
       this.link.classed(
         "hidden",
         l => isHidden(l.source.location) || isHidden(l.target.location)
       );
+    }
   }
 
   handleNodeSelection(previouslySelectedNode) {

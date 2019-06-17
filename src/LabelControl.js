@@ -54,7 +54,8 @@ export default function LabelControl(props) {
         <Radio value={LABELED_NODES.MAIN}>Main genes</Radio>
         <Radio value={LABELED_NODES.ALL}>All</Radio>
       </Radio.Group>
-
+      <br />
+      <br />
       <p style={{ fontWeight: "bold", marginBottom: 5, color: "#000" }}>
         Label content
       </p>

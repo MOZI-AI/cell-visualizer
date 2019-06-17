@@ -76,7 +76,6 @@ export class App extends Component {
         d.links = d.links.filter(l =>
           d.nodes.some(n => n.id === l.source || n.id === l.target)
         );
-        console.log(d);
         return d;
 
       default:
@@ -246,6 +245,8 @@ export class App extends Component {
                   this.setState({ nodeLabelContent: f })
                 }
               />
+              <br />
+              <br />
               <LocationFilter
                 filters={locationFilters}
                 onChange={locationFilters => this.setState({ locationFilters })}

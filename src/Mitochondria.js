@@ -80,7 +80,8 @@ export default class Mitochondria extends React.Component {
     if (!filters) return;
     const hiddenLocations = Object.keys(filters).filter(k => !filters[k]);
     const isHidden = l => hiddenLocations.includes(l);
-    this.node && this.node.classed("hidden", n => isHidden(n.location));
+    this.nodeGroup &&
+      this.nodeGroup.classed("hidden", n => isHidden(n.location));
     this.link &&
       this.link.classed(
         "hidden",

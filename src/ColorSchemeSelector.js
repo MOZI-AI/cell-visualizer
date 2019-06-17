@@ -13,12 +13,21 @@ export class ColorSchemeSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultColorScheme: ColorSchemes.LOCATION
+      colorScheme: ColorSchemes.LOCATION
     };
   }
 
   componentDidMount() {
-    this.handleColorSchemeChange(this.state.defaultColorScheme);
+    this.handleColorSchemeChange(this.state.colorScheme);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.colorScheme !== this.state.colorScheme ||
+      prevProps.data !== this.props.data
+    ) {
+      this.handleColorSchemeChange(this.state.colorScheme);
+    }
   }
 
   handleColorSchemeChange(colorScheme) {
@@ -43,7 +52,6 @@ export class ColorSchemeSelector extends React.Component {
           connectedNodes.push(link.source.id);
           connectedNodes.push(link.target.id);
         });
-        // connectedNodes = Array.from(connectedNodes);
         const connectionsByNode = connectedNodes.reduce((acc, node, i) => {
           if (!acc[node]) {
             acc[node] = connectedNodes.filter(n => n === node).length;
@@ -58,9 +66,10 @@ export class ColorSchemeSelector extends React.Component {
         const colorScheme = this.assignMonochromaticColors(relativePercentages);
         return this.props.onColorSchemeChange(colorScheme, n => {
           const c = connectionsByNode[n.id] || 0;
-          return colorScheme.find(a => {
+          const cs = colorScheme.find(a => {
             return c >= a.min && c <= a.max;
-          }).color;
+          });
+          return cs ? cs.color : "#000";
         });
       }
       case ColorSchemes.PATHWAY: {
@@ -70,11 +79,11 @@ export class ColorSchemeSelector extends React.Component {
         const pathwayConnectedNodes = pathways.reduce((a, pathway) => {
           const nodes = this.props.data.links
             .map(l => {
-              if (l.source.id === pathway.id) {
-                return l.target.id;
+              if (l.source === pathway.id) {
+                return l.target;
               }
-              if (l.target.id === pathway.id) {
-                return l.source.id;
+              if (l.target === pathway.id) {
+                return l.source;
               }
             })
             .filter(n => n);
@@ -178,8 +187,7 @@ export class ColorSchemeSelector extends React.Component {
       const cs =
         colorScheme.find(s => s.label === n[attribute]) ||
         colorScheme.find(s => s.label === "Unlocalized");
-      // console.log(n);
-      return cs.color;
+      return cs ? cs.color : "#000";
     };
 
     return { colorScheme, colorSelector };
@@ -227,17 +235,20 @@ export class ColorSchemeSelector extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="color-scheme-selector">
+        <p style={{ fontWeight: "bold", marginBottom: 5, color: "#000" }}>
+          Color scheme
+        </p>
         <Radio.Group
-          onChange={e => this.handleColorSchemeChange(e.target.value)}
-          defaultValue={this.state.defaultColorScheme}
+          onChange={e => this.setState({ colorScheme: e.target.value })}
+          value={this.state.colorScheme}
         >
           <Radio value={ColorSchemes.LOCATION}>Location</Radio>
           <Radio value={ColorSchemes.TYPE}>Annotation</Radio>
           <Radio value={ColorSchemes.CONNECTIVITY}>Connectivity</Radio>
           <Radio value={ColorSchemes.PATHWAY}>Pathway</Radio>
         </Radio.Group>
-      </React.Fragment>
+      </div>
     );
   }
 }

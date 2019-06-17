@@ -1,4 +1,122 @@
 import * as Yup from "yup";
+import saveSvgAsPng from "./Download";
+
+export const NODE_RADIUS = 4;
+export const SELECTED_NODE_RADIUS = 15;
+// Constraint a node inside a circlular boundary and not let it out
+export const constraintInsideCircle = (x, y, circle, padding) => {
+  let R = calculateDistance(x, y, circle.cx, circle.cy);
+  if (R > circle.rmax - padding) {
+    return {
+      x: ((circle.rmax - padding) / R) * (x - circle.cx) + circle.cx,
+      y: ((circle.rmax - padding) / R) * (y - circle.cy) + circle.cy
+    };
+  }
+};
+// Constraint a node outside a circlular boundary and not let it in
+export const constraintOutsideCircle = (x, y, circle, margin) => {
+  let R = calculateDistance(x, y, circle.cx, circle.cy);
+  if (R < circle.rmax + margin) {
+    return {
+      x: ((circle.rmax + margin) / R) * (x - circle.cx) + circle.cx,
+      y: ((circle.rmax + margin) / R) * (y - circle.cy) + circle.cy
+    };
+  }
+};
+// Constraint a node inside a rectangular boundary
+export const constraintInsideRectangle = (
+  x,
+  y,
+  maxWidth,
+  maxHeight,
+  padding
+) => {
+  return {
+    x: x < padding ? padding : x > maxWidth - padding ? maxWidth - padding : x,
+    y: y < padding ? padding : y > maxHeight - padding ? maxHeight - padding : y
+  };
+};
+
+// Calculate and return the distance between two points
+export const calculateDistance = (x1, y1, x2, y2) =>
+  Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+
+// Clone a javascript object
+export const clone = obj => JSON.parse(JSON.stringify(obj));
+
+export const convertCytoscapeJSONtoD3 = data => {
+  const d = data.elements || data;
+  return {
+    nodes: d.nodes.map(n => n.data),
+    links: d.edges.map(e => e.data)
+  };
+};
+
+export const modifyLocationAndIDAttributes = data => {
+  data.nodes = data.nodes.map(n => {
+    n.name = `${n.id}`;
+    n.originalLocation = `${n.location}`;
+    n.location = n.location.trim().replace(/\s+/g, "_");
+    n.id = `${n.name.replace(":", "_")}_${n.location}`;
+    return n;
+  });
+  data.links = data.links.map(l => {
+    l.source = data.nodes.find(n => n.name === l.source).id;
+    l.target = data.nodes.find(n => n.name === l.target).id;
+    return l;
+  });
+  return data;
+};
+
+export const generalizeLocations = (data, locations, defaultLocation) => {
+  data.nodes = data.nodes.map(n => {
+    const locationMapping = locations.find(l =>
+      l.matchers.some(m => n.location.toLowerCase().includes(m.toLowerCase()))
+    );
+    if (locationMapping) {
+      n.location = locationMapping.location;
+    } else if (defaultLocation) {
+      n.location = defaultLocation;
+    }
+    return n;
+  });
+  return data;
+};
+
+export const takeScreenshot = (elementID, screenShotName = "Screenshot") => {
+  saveSvgAsPng.saveSvgAsPng(
+    document.getElementById(elementID),
+    `${screenShotName}.png`
+  );
+};
+
+export const getPointsOnPath = (path, components) => {
+  const length = path.getTotalLength();
+  return components.map((c, i, arr) => {
+    const { x, y } = path.getPointAtLength((length * i) / arr.length);
+    return { ...c, x, y };
+  });
+};
+
+const NodeSchema = Yup.object().shape({
+  id: Yup.string().required(),
+  location: Yup.string()
+});
+
+const LinkSchema = Yup.object().shape({
+  source: Yup.string().required(),
+  target: Yup.string().required()
+});
+
+export const GraphSchema = Yup.object().shape({
+  nodes: Yup.array()
+    .of(NodeSchema)
+    .required(),
+  links: Yup.array()
+    .of(LinkSchema)
+    .required()
+});
+
 export const ColorPalletes = [
   "#e6194b",
   "#3cb44b",
@@ -38,23 +156,21 @@ export const ColorPalletes = [
   "#a6a6a6"
 ];
 
-const NodeSchema = Yup.object().shape({
-  id: Yup.string().required(),
-  location: Yup.string()
-});
-const LinkSchema = Yup.object().shape({
-  source: Yup.string().required(),
-  target: Yup.string().required()
-});
-
-export const GraphSchema = Yup.object().shape({
-  nodes: Yup.array()
-    .of(NodeSchema)
-    .required(),
-  links: Yup.array()
-    .of(LinkSchema)
-    .required()
-});
+export const MitochondrionLocations = [
+  {
+    location: "mitochondrial_inner_membrane",
+    matchers: ["mitochondrial_inner_membrane"]
+  },
+  {
+    location: "mitochondrial_outer_membrane",
+    matchers: ["mitochondrial_outer_membrane"]
+  },
+  {
+    location: "mitochondrial_intermembrane_space",
+    matchers: ["mitochondrial_intermembrane_space"]
+  },
+  { location: "mitochondrial_matrix", matchers: ["mitochondrial"] }
+];
 
 export const CellLocations = [
   { location: "extracellular_region", matchers: ["extracellular"] },

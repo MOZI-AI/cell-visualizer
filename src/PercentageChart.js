@@ -1,25 +1,27 @@
 import React, { Component } from "react";
 const d3 = require("d3");
 
-export class PercentageChart extends Component {
+export default class PercentageChart extends Component {
   constructor(props) {
     super(props);
     this.svg = undefined;
   }
 
   componentDidMount() {
-    this.svg = d3.select("svg#chart");
-    this.drawChart();
+    this.svg = d3.select("#chart");
   }
 
-  componentDidUpdate() {
-    this.svg.selectAll().remove();
-    this.drawChart();
+  componentDidUpdate(prevProps) {
+    const { data } = this.props;
+    if (data) {
+      this.svg.selectAll().remove();
+      this.drawChart();
+    }
   }
 
   sortAndPositionSegments(data) {
     return data
-      .sort((a, b) => (a.value < b.value ? 1 : a.value === b.value ? 0 : -1))
+      .sort((a, b) => b.value - a.value)
       .map((d, i, self) => {
         d.x1 =
           self
@@ -78,6 +80,10 @@ export class PercentageChart extends Component {
   }
 
   render() {
-    return <svg id="chart" />;
+    return (
+      <div className="percentage-chart-wrapper">
+        <svg id="chart" />
+      </div>
+    );
   }
 }

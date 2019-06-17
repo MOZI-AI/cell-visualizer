@@ -1,8 +1,4 @@
-.isActive {
-  display: initial;
-}
-
-.isNotActive {
+.hidden {
   display: none;
 }
 
@@ -21,6 +17,8 @@ div.tooltip {
 
 .ant-upload.ant-upload-drag {
   border: none;
+  height: auto;
+  border-radius: 10px;
 }
 
 .ant-upload.ant-upload-drag button {
@@ -51,8 +49,11 @@ div.tooltip {
 }
 
 .percentage-chart-wrapper {
+  width: 100vw;
+  text-align: center;
   position: absolute;
   bottom: 0px;
+  z-index: 2;
 }
 
 .visualization-wrapper {
@@ -62,6 +63,7 @@ div.tooltip {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .landing-page-wrapper {
@@ -174,6 +176,7 @@ div.tooltip {
   justify-content: center;
   align-items: center;
   padding-bottom: 90px;
+  z-index: 10;
 }
 
 .loader-wrapper .content {
@@ -191,12 +194,31 @@ div.tooltip {
   fill: #1890ff;
   opacity: 0.9;
   border-radius: 5px;
+  height: 30px;
+}
+
+.node {
+  stroke-width: 1px;
+  stroke: #fff;
+}
+
+.dimmed.node {
+  fill-opacity: 0.1;
+  stroke-opacity: 0.1;
 }
 
 .edge {
   stroke: #000;
   stroke-opacity: 0.3;
   stroke-width: 0.7;
+}
+
+.dimmed.edge {
+  stroke-opacity: 0.1;
+}
+
+.highlighted.edge {
+  stroke-opacity: 1;
 }
 
 #extracellular_region {
@@ -258,5 +280,24 @@ div.tooltip {
 }
 
 .navigation {
-  margin-bottom: 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 3;
+}
+
+#svg_wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.node-label {
+  fill: #000;
+  stroke: #000;
+  font-size: 0.8rem;
+  z-index: 2;
 }

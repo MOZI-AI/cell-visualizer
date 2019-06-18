@@ -10,6 +10,7 @@ import Navigator from "./Navigator";
 import LocationFilter from "./LocationFilter";
 import { ColorSchemeSelector } from "./ColorSchemeSelector";
 import Mitochondria from "./Mitochondria";
+import EndoplasmicReticulum from "./EndoplasmicReticulum";
 import Loader from "./Loader";
 import LabelControl from "./LabelControl";
 import {
@@ -21,6 +22,7 @@ import {
   takeScreenshot,
   CellLocations,
   MitochondrionLocations,
+  EndoplasmicReticulumLocations,
   generalizeLocations,
   clone
 } from "./utils";
@@ -66,17 +68,30 @@ export class App extends Component {
   }
 
   adoptDataToSelectedOrganelle(data, selectedOrganelle) {
+    let d;
     switch (selectedOrganelle) {
       case null:
         return generalizeLocations(clone(data), CellLocations);
       case "mitochondrion":
-        let d = generalizeLocations(clone(data), MitochondrionLocations);
+        d = generalizeLocations(clone(data), MitochondrionLocations);
         d.nodes = d.nodes.filter(n =>
           MitochondrionLocations.some(m => m.location === n.location)
         );
         d.links = d.links.filter(l =>
           d.nodes.some(n => n.id === l.source || n.id === l.target)
         );
+        return d;
+      case "endoplasmic_reticulum":
+        d = generalizeLocations(clone(data), EndoplasmicReticulumLocations);
+        console.log("data:", data);
+        d.nodes = d.nodes.filter(n =>
+          EndoplasmicReticulumLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+
+        console.log("d:", d);
         return d;
 
       default:
@@ -159,6 +174,18 @@ export class App extends Component {
         )}
         {this.isOrganelleSelected("ribosome") && (
           <Ribosome
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
+        )}
+        {this.isOrganelleSelected("endoplasmic_reticulum") && (
+          <EndoplasmicReticulum
             data={data}
             selectedNode={this.state.selectedNode}
             onOrganelleSelected={this.handleOrganelleSelected}

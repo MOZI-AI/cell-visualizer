@@ -30,10 +30,10 @@ export default class GolgiApparatus extends React.Component {
     });
   }
 
-  addPath(selectionGroup, name) {
+  addPath(selection, name) {
     this.pathDetails[name] = {
-      pathNode: selectionGroup.node(),
-      length: selectionGroup.node().getTotalLength()
+      pathNode: selection.node(),
+      length: selection.node().getTotalLength()
     };
   }
 
@@ -45,7 +45,7 @@ export default class GolgiApparatus extends React.Component {
     }
   }
 
-  calcPerecentage(percentage, variable) {
+  calcPercentage(percentage, variable) {
     if (variable <= 0) return 0;
     variable -= parseInt(variable * (percentage / 100));
     return value;
@@ -61,37 +61,37 @@ export default class GolgiApparatus extends React.Component {
             function(d, i) {
               this.getPointsFromPath(
                 this.pathDetails["smallIP0"],
-                this.minimize(10, nodesInside),
+                this.calcPercentage(10, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["smallIP1"],
-                this.minimize(10, nodesInside),
+                this.calcPercentage(10, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["mediumIP0"],
-                this.minimize(20, nodesInside),
+                this.calcPercentage(20, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["mediumIP1"],
-                this.minimize(20, nodesInside),
+                this.calcPercentage(20, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["largeIP0"],
-                this.minimize(10, nodesInside),
+                this.calcPercentage(10, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["largeIP1"],
-                this.minimize(30, nodesInside),
+                this.calcPercentage(30, nodesInside),
                 nodePostionList
               );
               this.getPointsFromPath(
                 this.pathDetails["largeIP2"],
-                this.minimize(100, nodesInside),
+                this.calcPercentage(100, nodesInside),
                 nodePostionList
               );
               return {
@@ -111,8 +111,31 @@ export default class GolgiApparatus extends React.Component {
         : d3.range(nodesInMembrane).map(
             function(d, i) {
               this.getPointsFromPath(
-                this.pathDetails["largeIP0"],
-                nodesInMembrane,
+                this.pathDetails["smallMembraneP0"],
+                1,
+                //this.calcPercentage(10, nodesInside),
+                nodePostionList
+              );
+              this.getPointsFromPath(
+                this.pathDetails["smallMembraneP1"],
+                1,
+                //this.calcPercentage(10, nodesInside),
+                nodePostionList
+              );
+              this.getPointsFromPath(
+                this.pathDetails["mediumMembraneP0"],
+                1, //this.calcPercentage(20, nodesInside),
+                nodePostionList
+              );
+              this.getPointsFromPath(
+                this.pathDetails["mediumMembraneP1"],
+                1,
+                //this.calcPercentage(20, nodesInside),
+                nodePostionList
+              );
+              this.getPointsFromPath(
+                this.pathDetails["largeMembraneP"],
+                1, //this.calcPercentage(100, nodesInside),
                 nodePostionList
               );
 
@@ -136,9 +159,16 @@ export default class GolgiApparatus extends React.Component {
     var mediumIPaths = this.svg.selectAll(".medium_path");
     var largeIPaths = this.svg.selectAll(".large_path");
 
+    var largeMembranePath = this.svg.select(".membrane_large");
+    var mediumMembranePaths = this.svg.selectAll(".membrane_medium");
+    var smallMembranePaths = this.svg.selectAll(".membrane_small");
+
     this.addGroupPaths(smallIPaths, "smallIP");
     this.addGroupPaths(mediumIPaths, "mediumIP");
     this.addGroupPaths(largeIPaths, "largeIP");
+    this.addGroupPaths(smallMembranePaths, "smallMembraneP");
+    this.addGroupPaths(mediumMembranePaths, "mediumMembraneP");
+    this.addPath(largeMembranePath, "largeMembraneP");
 
     console.log("Path Details", this.pathDetails);
 
@@ -173,7 +203,7 @@ export default class GolgiApparatus extends React.Component {
 
     console.log("Node Mapping \n", nodeMapping);
 
-    this.svg.selectAll(".path").remove();
+    //this.svg.selectAll(".path").remove();
 
     var nodeswithData = [];
     Object.keys(nodeMapping).forEach(location => {
@@ -295,7 +325,7 @@ export default class GolgiApparatus extends React.Component {
               style={{
                 fill: "#ecf3cd",
                 stroke: "#c1c3a4",
-                strokeWidth: "2"
+                strokeWidth: "4"
               }}
             />
             <path
@@ -304,7 +334,7 @@ export default class GolgiApparatus extends React.Component {
               style={{
                 fill: "#ecf3cd",
                 stroke: "#c1c3a4",
-                strokeWidth: "2"
+                strokeWidth: "4"
               }}
             />
             <path
@@ -313,7 +343,7 @@ export default class GolgiApparatus extends React.Component {
               style={{
                 fill: "#ecf3cd",
                 stroke: "#c1c3a4",
-                strokeWidth: "2"
+                strokeWidth: "4"
               }}
             />
             <path
@@ -322,7 +352,7 @@ export default class GolgiApparatus extends React.Component {
               style={{
                 fill: "#ecf3cd",
                 stroke: "#c1c3a4",
-                strokeWidth: "2"
+                strokeWidth: "4"
               }}
             />
             <path
@@ -331,7 +361,7 @@ export default class GolgiApparatus extends React.Component {
               style={{
                 fill: "#ecf3cd",
                 stroke: "#c1c3a4",
-                strokeWidth: "2"
+                strokeWidth: "4"
               }}
             />
           </g>
@@ -426,6 +456,71 @@ export default class GolgiApparatus extends React.Component {
             d="m 335.05029,62.826416 c 0,0 14.85225,28.354282 -6.30095,38.705844"
             id="path84small"
             className="large_path path"
+          />
+          <path
+            style={{
+              fill: "none",
+              stroke: "#000000",
+              strokeWidth: "1px",
+              strokeLinecap: "butt",
+              strokeLinejoin: "miter",
+              strokeOpacity: "1"
+            }}
+            d="m 43.055494,37.584216 c 12.209022,-9.696786 18.612578,-1.633897 86.564086,21.841382 6.8044,2.350724 17.96152,5.070826 30.16668,6.763501 12.20515,1.692676 25.45833,2.357925 36.45485,0.598945 14.95287,-2.39183 30.09146,-7.27766 41.68478,-11.730679 11.59331,-4.453018 19.50344,-8.681608 20.41312,-9.133807 C 284.00359,33.16573 294.3226,22.440243 303.10086,20.716657 311.75293,56.011896 226.67425,88.311101 176.76212,85.429981 143.1624,83.490477 102.11596,77.34022 67.510196,65.276481 53.950387,58.771833 37.654447,48.681421 43.055494,37.584216"
+            id="path30"
+            className="path membrane_medium"
+          />
+          <path
+            style={{
+              fill: "none",
+              stroke: "#000000",
+              strokeWidth: "1px",
+              strokeLinecap: "butt",
+              strokeLinejoin: "miter",
+              strokeOpacity: "1"
+            }}
+            d="m 52.087142,86.452097 c -0.0996,-0.399511 0.94624,6.790577 46.477741,23.831183 5.307177,3.10888 69.577377,25.13989 69.760537,3.54994 0.0797,-9.39771 -9.62744,-11.33598 -52.22396,-24.565393 C 86.534177,80.084973 75.43557,75.656992 52.087142,86.452097 Z"
+            id="path34"
+            className="path membrane_small"
+          />
+          <path
+            style={{
+              fill: "none",
+              stroke: "#000000",
+              strokeWidth: "1px",
+              strokeLinecap: "butt",
+              strokeLinejoin: "miter",
+              strokeOpacity: "1"
+            }}
+            d="m 162.60245,212.73448 c 4.49825,5.02572 -23.47774,3.63884 -40.61661,2.45831 -57.82076,-3.98272 -95.213488,-28.39205 -97.243905,-37.36616 -2.929773,-12.94912 64.819791,-7.71877 116.904665,18.72636 15.21536,7.72532 19.9381,10.65965 20.95585,16.18149 z"
+            id="path36"
+            className="path membrane_small"
+          />
+          <path
+            style={{
+              fill: "none",
+              stroke: "#000000",
+              strokeWidth: "1px",
+              strokeLinecap: "butt",
+              strokeLinejoin: "miter",
+              strokeOpacity: "1"
+            }}
+            d="m 196.74017,198.00187 c 1.32118,-4.11819 4.07515,-8.95206 9.2795,-9.55148 30.34192,-3.49467 75.61055,-7.65064 96.87608,-19.65827 17.31162,-9.77504 35.75578,-16.43835 54.68868,-32.61655 20.47105,-17.49255 41.43857,-45.56415 61.84576,-82.490263 4.79658,-8.679243 11.80955,-13.698783 15.13765,-13.164095 25.12399,27.680962 -8.16552,69.937278 -45.70942,105.162818 -29.37454,27.56065 -64.9894,46.0645 -79.30981,49.91995 -20.96268,8.58731 -55.51619,14.78277 -101.77064,11.56473 -6.32963,-0.44037 -8.87934,-3.71335 -11.0378,-9.16684"
+            id="path40"
+            className="path membrane_medium"
+          />
+          <path
+            style={{
+              fill: "none",
+              stroke: "#000000",
+              strokeWidth: "1px",
+              strokeLinecap: "butt",
+              strokeLinejoin: "miter",
+              strokeOpacity: "1"
+            }}
+            d="m 5.5998071,130.8997 c 1.2723453,-8.67612 9.2702849,-17.62592 15.8605149,-15.40211 31.244964,10.54331 62.741681,26.40793 66.629052,25.55866 33.843236,7.12362 65.042576,12.15143 92.528916,8.79154 25.72314,-3.14437 48.72882,-3.84342 66.02788,-11.60797 25.21066,-11.31561 45.15748,-17.80725 56.7832,-27.08773 22.93911,-18.311631 18.97784,-28.67778 22.41984,-32.823638 -40.49689,31.037268 -65.3375,36.122628 -82.72122,40.711588 -19.22171,3.1596 -44.50662,-2.23374 -50.83194,-7.91569 -2.81938,-2.53262 13.71431,-12.293206 25.90336,-15.06422 30.62215,-5.526032 53.88422,-15.298803 72.45578,-24.399297 12.66564,-6.206458 22.45911,-14.254941 25.74884,-18.523888 17.88166,-17.760257 21.37129,-33.484111 29.46778,-33.628989 9.16006,-0.163908 13.37751,8.035846 10.27381,17.237981 -6.191,18.355653 -13.57795,16.389495 -14.43617,19.207942 -3.39965,11.164742 12.46123,24.01933 5.29563,15.176546 6.03286,-1.91036 15.49809,-9.989508 20.14414,-22.181993 10.66275,-27.981885 27.31162,-50.804669 31.611,-42.6308555 C 409.32126,26.395802 397.44279,57.803062 382.46985,77.634413 350.43269,116.26137 309.60907,147.84782 263.23052,161.08018 182.45747,184.1257 81.649683,183.98347 21.290812,146.06256 15.198156,141.46898 9.8635457,136.49054 5.5998071,130.8997 Z"
+            id="path42"
+            className="path membrane_large"
           />
         </svg>
       </div>

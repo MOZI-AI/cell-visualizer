@@ -185,6 +185,14 @@ export default class CellVisualizer extends Component {
     d3.select("#mitochondrion").on("click", d =>
       this.props.onOrganelleSelected("mitochondrion")
     );
+
+    d3.select("#nucleus").on("click", d =>
+      this.props.onOrganelleSelected("nucleus")
+    );
+
+    d3.select("#golgi_apparatus").on("click", function (d) {
+      this.props.onOrganelleSelected("golgiApparatus");
+    }.bind(this));
   }
 
   initCellStructure() {
@@ -415,16 +423,7 @@ export default class CellVisualizer extends Component {
     this.handleLabelChange();
     this.registerNodeEventHandlers();
 
-    d3.select("#nucleus").on("click", function (d) {
-      // console.log(d.id);
-      this.props.onOrganelleSelected("nucleus");
-    }.bind(this));
-
     this.simulation.on("tick", this.onTick.bind(this));
-
-    d3.select("#golgi_apparatus").on("click", function (d) {
-      this.props.onOrganelleSelected("golgiApparatus");
-    }.bind(this));
 
     this.simulation.on("tick", this.onTick.bind(this));
   }

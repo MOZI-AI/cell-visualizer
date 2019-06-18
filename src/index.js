@@ -22,7 +22,9 @@ import {
   CellLocations,
   MitochondrionLocations,
   generalizeLocations,
-  clone
+  clone,
+  NucleusLocations,
+  GolgiLocations
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
@@ -76,13 +78,36 @@ export class App extends Component {
   }
 
   adoptDataToSelectedOrganelle(data, selectedOrganelle) {
+    let d = undefined;
+    console.log("switch case value: ", selectedOrganelle);
     switch (selectedOrganelle) {
       case null:
         return generalizeLocations(clone(data), CellLocations);
       case "mitochondrion":
-        let d = generalizeLocations(clone(data), MitochondrionLocations);
+        d = generalizeLocations(clone(data), MitochondrionLocations);
         d.nodes = d.nodes.filter(n =>
           MitochondrionLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
+        return d;
+
+      case "nucleus":
+        d = generalizeLocations(clone(data), NucleusLocations);
+        d.nodes = d.nodes.filter(n =>
+          NucleusLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
+        return d;
+      case "golgiApparatus":
+        d = generalizeLocations(clone(data), GolgiLocations);
+        d.nodes = d.nodes.filter(n =>
+          GolgiLocations.some(m => m.location === n.location)
         );
         d.links = d.links.filter(l =>
           d.nodes.some(n => n.id === l.source || n.id === l.target)
@@ -168,7 +193,7 @@ export class App extends Component {
             nodeLabelContent={this.state.nodeLabelContent}
           />)}
 
-        {this.isOrganelleSelected("mitochondrion") && (
+        {this.isOrganelleSelected("nucleus") && (
           <Nucleus
             data={data}
             selectedNode={this.state.selectedNode}
@@ -180,7 +205,7 @@ export class App extends Component {
             nodeLabelContent={this.state.nodeLabelContent}
           />)}
 
-        {this.isOrganelleSelected("mitochondrion") && (
+        {this.isOrganelleSelected("golgiApparatus") && (
           <GolgiApparatus
             data={data}
             selectedNode={this.state.selectedNode}

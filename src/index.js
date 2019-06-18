@@ -25,10 +25,17 @@ import {
   EndoplasmicReticulumLocations,
   generalizeLocations,
   clone,
-  downloadJSON
+  downloadJSON,
+  NucleusLocations,
+  GolgiLocations
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
+
+import * as bg from "./bg.svg";
+import Nucleus from "./Nucleus";
+import GolgiApparatus from "./GolgiApparatus";
+
 import Ribosome from "./Ribosome";
 
 export class App extends Component {
@@ -93,6 +100,27 @@ export class App extends Component {
         );
 
         console.log("d:", d);
+        return d;
+
+      case "nucleus":
+        d = generalizeLocations(clone(data), NucleusLocations);
+        d.nodes = d.nodes.filter(n =>
+          NucleusLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
+        return d;
+      case "golgiApparatus":
+        d = generalizeLocations(clone(data), GolgiLocations);
+        d.nodes = d.nodes.filter(n =>
+          GolgiLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
         return d;
 
       default:
@@ -163,6 +191,31 @@ export class App extends Component {
         )}
         {this.isOrganelleSelected("mitochondrion") && (
           <Mitochondria
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
+        )}
+
+        {this.isOrganelleSelected("nucleus") && (
+          <Nucleus
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
+        )}
+        {this.isOrganelleSelected("golgiApparatus") && (
+          <GolgiApparatus
             data={data}
             selectedNode={this.state.selectedNode}
             onOrganelleSelected={this.handleOrganelleSelected}

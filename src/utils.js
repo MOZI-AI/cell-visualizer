@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import saveSvgAsPng from "./Download";
+import html2canvas from "html2canvas";
 
 export const NODE_RADIUS = 4;
 export const SELECTED_NODE_RADIUS = 15;
@@ -83,6 +84,17 @@ export const generalizeLocations = (data, locations, defaultLocation) => {
   return data;
 };
 
+export const downloadJSON = (obj, fileName) => {
+  var data =
+    "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+  var a = document.createElement("a");
+  a.setAttribute("href", data);
+  a.setAttribute("download", `${fileName}.json`);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+};
+
 export const takeScreenshot = (elementID, screenShotName = "Screenshot") => {
   saveSvgAsPng.saveSvgAsPng(
     document.getElementById(elementID),
@@ -160,6 +172,13 @@ export const ColorPalletes = [
   "#d9d9d9",
   "#bfbfbf",
   "#a6a6a6"
+];
+
+export const RibosomeLocations = [
+  {
+    location: "",
+    matchers: [""]
+  }
 ];
 
 export const MitochondrionLocations = [

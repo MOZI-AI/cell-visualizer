@@ -301,3 +301,24 @@ div.tooltip {
   font-size: 0.8rem;
   z-index: 2;
 }
+
+.menu-popover .ant-popover-inner {
+  background-color: #001529;
+}
+.menu-popover .ant-popover-arrow,
+.menu-popover > .ant-popover-content > .ant-popover-arrow {
+  border-color: #001529;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.menu-popover .ant-menu-item {
+  padding: 0 24px 2px 0;
+  margin: 0;
+  line-height: 1rem;
+  height: auto;
+}
+
+.menu-popover .ant-menu-item.ant-menu-item-selected {
+  background-color: transparent;
+}

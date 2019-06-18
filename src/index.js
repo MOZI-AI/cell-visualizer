@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-import { Button, message, Drawer } from "antd";
+import { Button, message, Drawer, Popover, Menu, Icon } from "antd";
 import CellVisualizer from "./CellVisualizer";
 import PercentageChart from "./PercentageChart";
 import OrganelleDescription from "./OrganelleDescription";
@@ -22,7 +22,8 @@ import {
   CellLocations,
   MitochondrionLocations,
   generalizeLocations,
-  clone
+  clone,
+  downloadJSON
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
@@ -176,8 +177,46 @@ export class App extends Component {
   renderFloatingActionButtons() {
     return (
       <div className="floating-action-buttons-wrapper">
+        <div>
+          <Popover
+            overlayClassName="menu-popover"
+            placement="left"
+            trigger="hover"
+            content={
+              <Menu theme="dark" mode="inline">
+                <Menu.Item>
+                  <Icon type="file-pdf" />
+                  Summary
+                </Menu.Item>
+                <Menu.Item>
+                  <Icon type="file-text" />
+                  List of genes
+                </Menu.Item>
+                <Menu.Item>
+                  <Icon type="file-text" />
+                  List of interactions
+                </Menu.Item>
+                <Menu.Item
+                  onClick={e => downloadJSON(this.state.visualizerAdoptedData)}
+                >
+                  <Icon type="file-text" />
+                  Filtered JSON
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <Button
+              id="pdf_report"
+              icon="download"
+              size="large"
+              shape="round"
+              type="primary"
+              className="floating-action-button"
+            />
+          </Popover>
+        </div>
         <Button
-          id="download"
+          id="screenshot"
           icon="camera"
           size="large"
           shape="round"

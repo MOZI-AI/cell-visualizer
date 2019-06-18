@@ -22,6 +22,7 @@ import {
   takeScreenshot,
   CellLocations,
   MitochondrionLocations,
+  EndoplasmicReticulumLocations,
   generalizeLocations,
   clone
 } from "./utils";
@@ -67,17 +68,30 @@ export class App extends Component {
   }
 
   adoptDataToSelectedOrganelle(data, selectedOrganelle) {
+    let d;
     switch (selectedOrganelle) {
       case null:
         return generalizeLocations(clone(data), CellLocations);
       case "mitochondrion":
-        let d = generalizeLocations(clone(data), MitochondrionLocations);
+        d = generalizeLocations(clone(data), MitochondrionLocations);
         d.nodes = d.nodes.filter(n =>
           MitochondrionLocations.some(m => m.location === n.location)
         );
         d.links = d.links.filter(l =>
           d.nodes.some(n => n.id === l.source || n.id === l.target)
         );
+        return d;
+      case "endoplasmic_reticulum":
+        d = generalizeLocations(clone(data), EndoplasmicReticulumLocations);
+        console.log("data:", data);
+        d.nodes = d.nodes.filter(n =>
+          EndoplasmicReticulumLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+
+        console.log("d:", d);
         return d;
 
       default:

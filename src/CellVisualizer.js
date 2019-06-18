@@ -122,7 +122,7 @@ export default class CellVisualizer extends Component {
     const visualiser = this;
     const { nodeLabelVisibility, nodeLabelContent } = this.props;
     this.nodeGroup &&
-      this.nodeGroup.each(function(n) {
+      this.nodeGroup.each(function (n) {
         d3.select(this)
           .selectAll("text")
           .remove();
@@ -187,12 +187,23 @@ export default class CellVisualizer extends Component {
     d3.select("#mitochondrion").on("click", d =>
       this.props.onOrganelleSelected("mitochondrion")
     );
+
+    d3.select("#nucleus").on("click", d =>
+      this.props.onOrganelleSelected("nucleus")
+    );
+
+    d3.select("#golgi_apparatus").on("click",d => 
+      this.props.onOrganelleSelected("golgiApparatus");
+    );
+
     d3.select("#endosome").on("click", d =>
       this.props.onOrganelleSelected("ribosome")
     );
+    
     d3.select("#endoplasmic_reticulum_group").on("click", d =>
       this.props.onOrganelleSelected("endoplasmic_reticulum")
     );
+
   }
 
   initCellStructure() {
@@ -260,7 +271,7 @@ export default class CellVisualizer extends Component {
       .attr("id", d => `${d.location}_group`);
 
     const visualiser = this;
-    this.groupComponents.each(function(d) {
+    this.groupComponents.each(function (d) {
       const mappings = visualiser.props.groupMapping.filter(
         m => m.component === d.location
       );
@@ -306,16 +317,16 @@ export default class CellVisualizer extends Component {
     this.organnelSimulation
       .on(
         "tick",
-        function() {
+        function () {
           const cell = this.cell;
-          this.groupComponents.each(function(d) {
+          this.groupComponents.each(function (d) {
             const result = constraintInsideCircle(
               d.x,
               d.y,
               cell["cytoplasm"],
               d.r + PADDING
             ) || { x: d.x, y: d.y };
-            d3.select(this).attr("transform", function(d, i) {
+            d3.select(this).attr("transform", function (d, i) {
               return "translate(" + result.x + "," + result.y + ")";
             });
             cell[d.location].cx = result.x;
@@ -329,7 +340,7 @@ export default class CellVisualizer extends Component {
       )
       .on(
         "end",
-        function() {
+        function () {
           this.props.onLoadingToggled(false);
           this.data && this.initGraph();
         }.bind(this)
@@ -365,7 +376,7 @@ export default class CellVisualizer extends Component {
           .forceX()
           .strength(0.3)
           .x(
-            function(d) {
+            function (d) {
               if (
                 d.location &&
                 d.location != "extracellular_region" &&
@@ -383,7 +394,7 @@ export default class CellVisualizer extends Component {
           .forceY()
           .strength(0.3)
           .y(
-            function(d) {
+            function (d) {
               if (
                 d.location &&
                 d.location != "extracellular_region" &&
@@ -426,6 +437,7 @@ export default class CellVisualizer extends Component {
 
     this.simulation.on("tick", this.onTick.bind(this));
     speedUpSimulation(this.simulation, 200);
+
   }
 
   registerNodeEventHandlers() {
@@ -445,22 +457,22 @@ export default class CellVisualizer extends Component {
     };
 
     this.node
-      .on("mouseover", function(d, i) {
+      .on("mouseover", function (d, i) {
         let position = calculateNewPosition(d);
         let characterLength =
           (d.name.length < 6
             ? d.name.length + 2
             : d.name.length > 12
-            ? d.name.length - 2
-            : d.name.length) * 12;
+              ? d.name.length - 2
+              : d.name.length) * 12;
 
         let tooltipPosition = {
           x:
             position.x < characterLength
               ? position.x
               : position.x > WIDTH - characterLength
-              ? WIDTH - characterLength
-              : position.x - characterLength / 2,
+                ? WIDTH - characterLength
+                : position.x - characterLength / 2,
           y: position.y < 70 ? position.y + 15 : position.y - 40
         };
 
@@ -488,7 +500,7 @@ export default class CellVisualizer extends Component {
           .classed("dimmed", l => l.source !== d && l.target !== d)
           .classed("highlighted", l => l.source === d || l.target === d);
       })
-      .on("mouseout", function(d, i) {
+      .on("mouseout", function (d, i) {
         d3.selectAll(".node-tooltip-wrapper , .node-tooltip").remove();
         node.classed("dimmed", false);
         link.classed("dimmed highlighted", false);
@@ -530,7 +542,7 @@ export default class CellVisualizer extends Component {
   onTick() {
     // Calculate the node's new position after applying the constraints
     const calculateNewPosition = this.calculateNewPosition.bind(this);
-    this.node.each(function(d) {
+    this.node.each(function (d) {
       const result = calculateNewPosition(d);
 
       d3.select(this.parentNode)
@@ -543,7 +555,7 @@ export default class CellVisualizer extends Component {
         .attr("cy", result.y);
     });
     // Update link
-    this.link.each(function(d) {
+    this.link.each(function (d) {
       const sourcePosition = calculateNewPosition(d.source);
       const targetPosition = calculateNewPosition(d.target);
 

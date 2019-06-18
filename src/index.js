@@ -24,11 +24,19 @@ import {
   MitochondrionLocations,
   EndoplasmicReticulumLocations,
   generalizeLocations,
-  clone
+  clone,
+  NucleusLocations,
+  GolgiLocations
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
+
+import * as bg from "./bg.svg";
+import Nucleus from "./Nucleus";
+import GolgiApparatus from "./GolgiApparatus";
+
 import Ribosome from "./Ribosome";
+
 
 export class App extends Component {
   constructor(props) {
@@ -94,6 +102,27 @@ export class App extends Component {
         console.log("d:", d);
         return d;
 
+      case "nucleus":
+        d = generalizeLocations(clone(data), NucleusLocations);
+        d.nodes = d.nodes.filter(n =>
+          NucleusLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
+        return d;
+      case "golgiApparatus":
+        d = generalizeLocations(clone(data), GolgiLocations);
+        d.nodes = d.nodes.filter(n =>
+          GolgiLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+        console.log(d);
+        return d;
+
       default:
         return clone(data);
     }
@@ -102,7 +131,7 @@ export class App extends Component {
   handleFileUploaded(fileName, data) {
     let d = typeof data === "string" ? JSON.parse(data) : data;
     GraphSchema.isValid(d).then(
-      function(valid) {
+      function (valid) {
         if (!valid) {
           try {
             d = convertCytoscapeJSONtoD3(d);
@@ -170,8 +199,30 @@ export class App extends Component {
             locationFilters={this.state.locationFilters}
             nodeLabelVisibility={this.state.nodeLabelVisibility}
             nodeLabelContent={this.state.nodeLabelContent}
-          />
-        )}
+          />)}
+
+        {this.isOrganelleSelected("nucleus") && (
+          <Nucleus
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />)}
+        {this.isOrganelleSelected("golgiApparatus") && (
+          <GolgiApparatus
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />)}
         {this.isOrganelleSelected("ribosome") && (
           <Ribosome
             data={data}
@@ -295,8 +346,8 @@ export class App extends Component {
             </Drawer>
           </Fragment>
         ) : (
-          <LandingPage onFileUploaded={this.handleFileUploaded} />
-        )}
+            <LandingPage onFileUploaded={this.handleFileUploaded} />
+          )}
         <Loader visible={loading} />
       </Fragment>
     );

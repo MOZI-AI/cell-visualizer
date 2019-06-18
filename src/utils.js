@@ -80,6 +80,7 @@ export const generalizeLocations = (data, locations, defaultLocation) => {
     }
     return n;
   });
+  console.log("data", data);
   return data;
 };
 
@@ -214,6 +215,41 @@ export const EndoplasmicReticulumLocations = [
     ]
   }
 ];
+
+export const NucleusLocations = [
+  {
+    location: "nucleus_inner_membrane",
+    matchers: []
+  },
+  {
+    location: "nucleus_membrane",
+    matchers: ["nuclear_envelope"]
+  },
+  {
+    location: "nucleus_outer_membrane",
+    matchers: []
+  },
+  {
+    location: "nucleoplasm",
+    matchers: ["nucleoplasm"]
+  },
+  {
+    location: "neucleoid",
+    matchers: ["neucleoid"]
+  }
+];
+
+export const GolgiLocations = [
+  {
+    location: "golgi_apparatus",
+    matchers: ["Golgi_apparatus"]
+  },
+  {
+    location: "golgi_membrane",
+    matchers: ["Golgi_membrane"]
+  }
+];
+
 
 export const CellLocations = [
   { location: "extracellular_region", matchers: ["extracellular"] },

@@ -7,7 +7,8 @@ import {
   CellLocations,
   generalizeLocations,
   NODE_RADIUS,
-  SELECTED_NODE_RADIUS
+  SELECTED_NODE_RADIUS,
+  speedUpSimulation
 } from "./utils";
 const d3 = require("d3");
 
@@ -186,6 +187,9 @@ export default class CellVisualizer extends Component {
     d3.select("#mitochondrion").on("click", d =>
       this.props.onOrganelleSelected("mitochondrion")
     );
+    d3.select("#endosome").on("click", d =>
+      this.props.onOrganelleSelected("ribosome")
+    );
   }
 
   initCellStructure() {
@@ -327,6 +331,7 @@ export default class CellVisualizer extends Component {
           this.data && this.initGraph();
         }.bind(this)
       );
+    speedUpSimulation(this.organnelSimulation, 298);
   }
 
   initGraph() {
@@ -417,6 +422,7 @@ export default class CellVisualizer extends Component {
     this.registerNodeEventHandlers();
 
     this.simulation.on("tick", this.onTick.bind(this));
+    speedUpSimulation(this.simulation, 200);
   }
 
   registerNodeEventHandlers() {

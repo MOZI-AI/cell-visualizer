@@ -26,6 +26,7 @@ import {
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
+import Ribosome from "./Ribosome";
 
 export class App extends Component {
   constructor(props) {
@@ -146,6 +147,18 @@ export class App extends Component {
         )}
         {this.isOrganelleSelected("mitochondrion") && (
           <Mitochondria
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
+        )}
+        {this.isOrganelleSelected("ribosome") && (
+          <Ribosome
             data={data}
             selectedNode={this.state.selectedNode}
             onOrganelleSelected={this.handleOrganelleSelected}

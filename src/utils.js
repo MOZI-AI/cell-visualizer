@@ -98,6 +98,12 @@ export const getPointsOnPath = (path, components) => {
   });
 };
 
+export const speedUpSimulation = (force, ticks) => {
+  for (var i = 0; i < ticks; i++) {
+    force.tick();
+  }
+};
+
 const NodeSchema = Yup.object().shape({
   id: Yup.string().required(),
   location: Yup.string()

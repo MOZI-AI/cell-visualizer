@@ -49,11 +49,11 @@ export class ColorSchemeSelector extends React.Component {
       case ColorSchemes.CONNECTIVITY: {
         let connectedNodes = [];
         this.props.data.links.map(link => {
-          connectedNodes.push(link.source.id);
-          connectedNodes.push(link.target.id);
+          connectedNodes.push(link.source);
+          connectedNodes.push(link.target);
         });
         const connectionsByNode = connectedNodes.reduce((acc, node, i) => {
-          if (!acc[node]) {
+          if (acc[node] === undefined) {
             acc[node] = connectedNodes.filter(n => n === node).length;
           }
           return acc;
@@ -130,6 +130,7 @@ export class ColorSchemeSelector extends React.Component {
     const relativePercentages = [];
     const zerCount =
       this.props.data.nodes.length - Object.values(connectionsByNode).length;
+
     if (zerCount > 0) {
       relativePercentages.push({
         min: 0,
@@ -170,6 +171,7 @@ export class ColorSchemeSelector extends React.Component {
       });
       i += 1;
     }
+
     return relativePercentages;
   }
 

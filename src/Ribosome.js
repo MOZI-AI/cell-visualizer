@@ -5,14 +5,14 @@ import {
   getPointsOnPath,
   MitochondrionLocations
 } from "./utils";
-import * as svg from "./mitochondrion.svg";
+import * as svg from "./ribosome.svg";
 const d3 = require("d3");
 
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 const PATHS = MitochondrionLocations.map(m => m.location);
 
-export default class Mitochondria extends React.Component {
+export default class Ribosome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -98,28 +98,28 @@ export default class Mitochondria extends React.Component {
       d3.select(`#${selectedNode.id}`).attr("r", SELECTED_NODE_RADIUS);
   }
 
-  drawGraph() {
-    const { data } = this.props;
+  // drawGraph() {
+  //   const { data } = this.props;
 
-    const nodes = PATHS.reduce((nodesWithCoordinates, path) => {
-      const nodes = data.nodes.filter(n => n.location === path);
-      const pathElement = d3.select(`#${path}`).node();
-      return [...nodesWithCoordinates, ...getPointsOnPath(pathElement, nodes)];
-    }, []);
+  //   const nodes = PATHS.reduce((nodesWithCoordinates, path) => {
+  //     const nodes = data.nodes.filter(n => n.location === path);
+  //     const pathElement = d3.select(`#${path}`).node();
+  //     return [...nodesWithCoordinates, ...getPointsOnPath(pathElement, nodes)];
+  //   }, []);
 
-    const links = data.links.reduce((acc, l) => {
-      const source = nodes.find(n => n.id === l.source.id);
-      if (source) {
-        const target = nodes.find(n => n.id === l.target.id);
-        if (target) return [...acc, { ...l, source, target }];
-      }
-      return acc;
-    }, []);
-    // Add the edges
-    this.placeLinks(links);
-    // Add the nodes
-    this.placeNodes(nodes);
-  }
+  //   const links = data.links.reduce((acc, l) => {
+  //     const source = nodes.find(n => n.id === l.source.id);
+  //     if (source) {
+  //       const target = nodes.find(n => n.id === l.target.id);
+  //       if (target) return [...acc, { ...l, source, target }];
+  //     }
+  //     return acc;
+  //   }, []);
+  //   // Add the edges
+  //   this.placeLinks(links);
+  //   // Add the nodes
+  //   this.placeNodes(nodes);
+  // }
 
   registerNodeEventHandlers() {
     let data = this.props.data;

@@ -3,16 +3,16 @@ import {
   NODE_RADIUS,
   SELECTED_NODE_RADIUS,
   getPointsOnPath,
-  MitochondrionLocations
+  EndoplasmicReticulumLocations
 } from "./utils";
-import * as svg from "./mitochondrion.svg";
+import * as svg from "./endoplasmic_reticulum.svg";
 const d3 = require("d3");
 
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
-const PATHS = MitochondrionLocations.map(m => m.location);
+const PATHS = EndoplasmicReticulumLocations.map(m => m.location);
 
-export default class Mitochondria extends React.Component {
+export default class EndoplasmicReticulum extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -101,8 +101,11 @@ export default class Mitochondria extends React.Component {
   drawGraph() {
     const { data } = this.props;
 
+    console.log('PATHS:', PATHS)
     const nodes = PATHS.reduce((nodesWithCoordinates, path) => {
       const nodes = data.nodes.filter(n => n.location === path);
+      console.log("path:", path);
+
       const pathElement = d3.select(`#${path}`).node();
       return [...nodesWithCoordinates, ...getPointsOnPath(pathElement, nodes)];
     }, []);
@@ -138,6 +141,7 @@ export default class Mitochondria extends React.Component {
 
     this.node
       .on("mouseover", function(d, i) {
+        // Use character length to determine hover information
         let characterLength =
           (d.name.length < 6
             ? d.name.length + 2
@@ -155,12 +159,11 @@ export default class Mitochondria extends React.Component {
           y: d.y < 70 ? d.y + 15 : d.y - 40
         };
 
-        // Use character length to determine hover information
         d3.select(this.parentNode.parentNode) // This lets this component be drawn on top of other comoponents
           .append("rect")
           .attr("class", "node-tooltip-wrapper tooltip-wrapper")
-          .attr("x", tooltipPosition.x) // set x position of left side of rectangle
-          .attr("y", tooltipPosition.y) // set y position of top of rectangle
+          .attr("x", tooltipPosition.x)
+          .attr("y", tooltipPosition.y)
           .attr("width", characterLength)
           .attr("rx", 8)
           .attr("rx", 8);
@@ -168,8 +171,8 @@ export default class Mitochondria extends React.Component {
         d3.select(this.parentNode.parentNode) // This lets this component be drawn on top of other comoponents
           .append("text")
           .attr("class", "node-tooltip tooltip")
-          .attr("x", tooltipPosition.x + characterLength / 2) // set x position of left side of text
-          .attr("y", tooltipPosition.y) // set y position of bottom of text
+          .attr("x", tooltipPosition.x + characterLength / 2)
+          .attr("y", tooltipPosition.y)
           .attr("dy", 20)
           .text(d.name);
 

@@ -10,6 +10,7 @@ import Navigator from "./Navigator";
 import LocationFilter from "./LocationFilter";
 import { ColorSchemeSelector } from "./ColorSchemeSelector";
 import Mitochondria from "./Mitochondria";
+import EndoplasmicReticulum from "./EndoplasmicReticulum";
 import Loader from "./Loader";
 import LabelControl from "./LabelControl";
 import {
@@ -21,6 +22,7 @@ import {
   takeScreenshot,
   CellLocations,
   MitochondrionLocations,
+  EndoplasmicReticulumLocations,
   generalizeLocations,
   clone,
   NucleusLocations,
@@ -28,17 +30,13 @@ import {
 } from "./utils";
 import "antd/dist/antd.css";
 import "./style.css";
+
 import * as bg from "./bg.svg";
 import Nucleus from "./Nucleus";
 import GolgiApparatus from "./GolgiApparatus";
-import posed from "react-pose";
 
-const Box = posed.div({
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 }
-});
+import Ribosome from "./Ribosome";
 
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class App extends Component {
   constructor(props) {
@@ -78,8 +76,7 @@ export class App extends Component {
   }
 
   adoptDataToSelectedOrganelle(data, selectedOrganelle) {
-    let d = undefined;
-    console.log("switch case value: ", selectedOrganelle);
+    let d;
     switch (selectedOrganelle) {
       case null:
         return generalizeLocations(clone(data), CellLocations);
@@ -91,7 +88,18 @@ export class App extends Component {
         d.links = d.links.filter(l =>
           d.nodes.some(n => n.id === l.source || n.id === l.target)
         );
-        console.log(d);
+        return d;
+      case "endoplasmic_reticulum":
+        d = generalizeLocations(clone(data), EndoplasmicReticulumLocations);
+        console.log("data:", data);
+        d.nodes = d.nodes.filter(n =>
+          EndoplasmicReticulumLocations.some(m => m.location === n.location)
+        );
+        d.links = d.links.filter(l =>
+          d.nodes.some(n => n.id === l.source || n.id === l.target)
+        );
+
+        console.log("d:", d);
         return d;
 
       case "nucleus":
@@ -204,7 +212,6 @@ export class App extends Component {
             nodeLabelVisibility={this.state.nodeLabelVisibility}
             nodeLabelContent={this.state.nodeLabelContent}
           />)}
-
         {this.isOrganelleSelected("golgiApparatus") && (
           <GolgiApparatus
             data={data}
@@ -216,21 +223,29 @@ export class App extends Component {
             nodeLabelVisibility={this.state.nodeLabelVisibility}
             nodeLabelContent={this.state.nodeLabelContent}
           />)}
-
-        {this.state.selectedNode && (
-          <OrganelleDescription
+        {this.isOrganelleSelected("ribosome") && (
+          <Ribosome
+            data={data}
             selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
             onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
           />
         )}
-        {this.state.colorScheme && (
-          <div className="percentage-chart-wrapper">
-            <PercentageChart
-              width={600}
-              height={30}
-              data={this.state.colorScheme}
-            />
-          </div>
+        {this.isOrganelleSelected("endoplasmic_reticulum") && (
+          <EndoplasmicReticulum
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
         )}
       </div>
     );
@@ -321,6 +336,8 @@ export class App extends Component {
                   this.setState({ nodeLabelContent: f })
                 }
               />
+              <br />
+              <br />
               <LocationFilter
                 filters={locationFilters}
                 onChange={locationFilters => this.setState({ locationFilters })}

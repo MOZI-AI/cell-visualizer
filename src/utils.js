@@ -99,6 +99,12 @@ export const getPointsOnPath = (path, components) => {
   });
 };
 
+export const speedUpSimulation = (force, ticks) => {
+  for (var i = 0; i < ticks; i++) {
+    force.tick();
+  }
+};
+
 const NodeSchema = Yup.object().shape({
   id: Yup.string().required(),
   location: Yup.string()
@@ -172,6 +178,43 @@ export const MitochondrionLocations = [
   },
   { location: "mitochondrial_matrix", matchers: ["mitochondrial"] }
 ];
+export const EndoplasmicReticulumLocations = [
+  {
+    location: "rough_endoplasmic_reticulum",
+    matchers: [
+      "endoplasmic_reticulum_lumen",
+      "endoplasmic_reticulum_cisternal_network",
+      "endoplasmic_reticulum_quality_control_compartment",
+      "rough_endoplasmic_reticulum_lumen"
+    ]
+  },
+  {
+    location: "rough_endoplasmic_reticulum_membrane",
+    matchers: [
+      "endoplasmic_reticulum_membrane",
+      "cytoplasmic_side_of_endoplasmic_reticulum_membrane",
+      "extrinsic_component_of_endoplasmic_reticulum_membrane",
+      "integral_component_of_cytoplasmic_side_of_endoplasmic_reticulum_membrane",
+      "integral_component_of_endoplasmic_reticulum_membrane",
+      "integral_component_of_lumenal_side_of_endoplasmic_reticulum_membrane",
+      "intrinsic_component_of_endoplasmic_reticulum_membrane",
+      "lumenal_side_of_endoplasmic_reticulum_membrane",
+      "lumenal_side_of_rough_endoplasmic_reticulum_membrane",
+      "cytoplasmic_side_of_rough_endoplasmic_reticulum_membrane"
+    ]
+  },
+  {
+    location: "smooth_endoplasmic_reticulum",
+    matchers: ["smooth_endoplasmic_reticulum_lumen"]
+  },
+  {
+    location: "smooth_endoplasmic_reticulum_membrane",
+    matchers: [
+      "cytoplasmic_side_of_smooth_endoplasmic_reticulum_membrane",
+      "lumenal_side_of_smooth_endoplasmic_reticulum_membrane"
+    ]
+  }
+];
 
 export const NucleusLocations = [
   {
@@ -227,7 +270,7 @@ export const CellLocations = [
     location: "host_cell_endoplasmic_reticulum",
     matchers: ["host_cell_endoplasmic_reticulum"]
   },
-
+  
   {
     location: "rough_endoplasmic_reticulum_membrane",
     matchers: ["rough_endoplasmic_reticulum_membrane"]

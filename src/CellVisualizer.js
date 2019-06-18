@@ -7,7 +7,8 @@ import {
   CellLocations,
   generalizeLocations,
   NODE_RADIUS,
-  SELECTED_NODE_RADIUS
+  SELECTED_NODE_RADIUS,
+  speedUpSimulation
 } from "./utils";
 const d3 = require("d3");
 
@@ -118,20 +119,21 @@ export default class CellVisualizer extends Component {
   }
 
   handleLabelChange() {
-    let visualiser = this;
+    const visualiser = this;
+    const { nodeLabelVisibility, nodeLabelContent } = this.props;
     this.nodeGroup &&
       this.nodeGroup.each(function (n) {
         d3.select(this)
           .selectAll("text")
           .remove();
-        if (visualiser.props.nodeLabelVisibility(n)) {
+        if (nodeLabelVisibility(n)) {
           const labelPosition = visualiser.calculateNewPosition(n);
           d3.select(this)
             .attr("class", "node-label")
             .append("text")
             .attr("x", labelPosition.x)
             .attr("y", labelPosition.y)
-            .text(n => visualiser.props.nodeLabelContent(n));
+            .text(n => nodeLabelContent(n));
         }
       });
   }
@@ -140,14 +142,14 @@ export default class CellVisualizer extends Component {
     if (!filters) return;
     const hiddenLocations = Object.keys(filters).filter(k => !filters[k]);
     const isHidden = l => hiddenLocations.includes(l);
-    this.groupComponents &&
+    if (this.node) {
       this.groupComponents.classed("hidden", g => isHidden(g.id));
-    this.node && this.node.classed("hidden", n => isHidden(n.location));
-    this.link &&
+      this.nodeGroup.classed("hidden", n => isHidden(n.location));
       this.link.classed(
         "hidden",
         l => isHidden(l.source.location) || isHidden(l.target.location)
       );
+    }
   }
 
   handleNodeSelection(previouslySelectedNode) {
@@ -190,9 +192,18 @@ export default class CellVisualizer extends Component {
       this.props.onOrganelleSelected("nucleus")
     );
 
-    d3.select("#golgi_apparatus").on("click", function (d) {
+    d3.select("#golgi_apparatus").on("click",d => 
       this.props.onOrganelleSelected("golgiApparatus");
-    }.bind(this));
+    );
+
+    d3.select("#endosome").on("click", d =>
+      this.props.onOrganelleSelected("ribosome")
+    );
+    
+    d3.select("#endoplasmic_reticulum_group").on("click", d =>
+      this.props.onOrganelleSelected("endoplasmic_reticulum")
+    );
+
   }
 
   initCellStructure() {
@@ -334,6 +345,7 @@ export default class CellVisualizer extends Component {
           this.data && this.initGraph();
         }.bind(this)
       );
+    speedUpSimulation(this.organnelSimulation, 298);
   }
 
   initGraph() {
@@ -424,8 +436,8 @@ export default class CellVisualizer extends Component {
     this.registerNodeEventHandlers();
 
     this.simulation.on("tick", this.onTick.bind(this));
+    speedUpSimulation(this.simulation, 200);
 
-    this.simulation.on("tick", this.onTick.bind(this));
   }
 
   registerNodeEventHandlers() {

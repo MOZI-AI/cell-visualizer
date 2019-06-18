@@ -10,6 +10,7 @@ import Navigator from "./Navigator";
 import LocationFilter from "./LocationFilter";
 import { ColorSchemeSelector } from "./ColorSchemeSelector";
 import Mitochondria from "./Mitochondria";
+import EndoplasmicReticulum from "./EndoplasmicReticulum";
 import Loader from "./Loader";
 import LabelControl from "./LabelControl";
 import {
@@ -159,6 +160,18 @@ export class App extends Component {
         )}
         {this.isOrganelleSelected("ribosome") && (
           <Ribosome
+            data={data}
+            selectedNode={this.state.selectedNode}
+            onOrganelleSelected={this.handleOrganelleSelected}
+            onNodeSelected={this.handleNodeSelected}
+            colorSelector={this.state.colorSelector}
+            locationFilters={this.state.locationFilters}
+            nodeLabelVisibility={this.state.nodeLabelVisibility}
+            nodeLabelContent={this.state.nodeLabelContent}
+          />
+        )}
+        {this.isOrganelleSelected("endoplasmic_reticulum") && (
+          <EndoplasmicReticulum
             data={data}
             selectedNode={this.state.selectedNode}
             onOrganelleSelected={this.handleOrganelleSelected}

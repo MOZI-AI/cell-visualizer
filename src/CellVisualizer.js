@@ -190,6 +190,9 @@ export default class CellVisualizer extends Component {
     d3.select("#endosome").on("click", d =>
       this.props.onOrganelleSelected("ribosome")
     );
+    d3.select("#endoplasmic_reticulum_group").on("click", d =>
+      this.props.onOrganelleSelected("endoplasmic_reticulum")
+    );
   }
 
   initCellStructure() {

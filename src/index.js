@@ -23,7 +23,6 @@ import {
   EndoplasmicReticulumLocations,
   generalizeLocations,
   clone,
-  downloadJSON,
   NucleusLocations,
   GolgiLocations
 } from "./utils";
@@ -274,18 +273,12 @@ export class App extends Component {
                   <Icon type="file-text" />
                   List of interactions
                 </Menu.Item>
-                <Menu.Item
-                  onClick={e => downloadJSON(this.state.visualizerAdoptedData)}
-                >
-                  <Icon type="file-text" />
-                  Filtered JSON
-                </Menu.Item>
               </Menu>
             }
           >
             <Button
               id="pdf_report"
-              icon="download"
+              icon="file-pdf"
               size="large"
               shape="round"
               type="primary"
@@ -293,6 +286,14 @@ export class App extends Component {
             />
           </Popover>
         </div>
+        <Button
+          id="pdf_report"
+          icon="share-alt"
+          size="large"
+          shape="round"
+          type="primary"
+          className="floating-action-button"
+        />
         <Button
           id="screenshot"
           icon="camera"

@@ -1,6 +1,5 @@
 import * as Yup from "yup";
-import saveSvgAsPng from "./Download";
-import html2canvas from "html2canvas";
+import saveSvgAsPng from "save-svg-as-png";
 
 export const NODE_RADIUS = 4;
 export const SELECTED_NODE_RADIUS = 15;

@@ -193,7 +193,7 @@ export default class CellVisualizer extends Component {
     );
 
     d3.select("#golgi_apparatus").on("click", d =>
-      this.props.onOrganelleSelected("golgiApparatus")
+      this.props.onOrganelleSelected("golgi_apparatus")
     );
 
     d3.select("#endosome").on("click", d =>

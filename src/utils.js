@@ -260,15 +260,26 @@ export const NucleusLocations = [
 
 export const GolgiLocations = [
   {
-    location: "golgi_apparatus",
-    matchers: ["Golgi_apparatus"]
+    location: "golgi_lumen",
+    matchers: ["golgi_apparatus", "golgi_lumen"]
   },
   {
     location: "golgi_membrane",
-    matchers: ["Golgi_membrane"]
+    matchers: ["golgi_membrane"]
+  },
+  {
+    location: "golgi-associated_vesicle",
+    matchers: ["golgi-associated_vesicle"]
+  },
+  {
+    location: "ER_to_Golgi_transport_vesicle",
+    matchers: ["er_to_golgi_transport_vesicle"]
+  },
+  {
+    location: "ER_to_Golgi_transport_vesicle_membrane",
+    matchers: ["er_to_golgi_transport_vesicle_membrane"]
   }
 ];
-
 
 export const CellLocations = [
   { location: "extracellular_region", matchers: ["extracellular"] },
@@ -289,7 +300,7 @@ export const CellLocations = [
     location: "host_cell_endoplasmic_reticulum",
     matchers: ["host_cell_endoplasmic_reticulum"]
   },
-  
+
   {
     location: "rough_endoplasmic_reticulum_membrane",
     matchers: ["rough_endoplasmic_reticulum_membrane"]

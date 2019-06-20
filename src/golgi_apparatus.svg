@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000px"
+   height="800px"
+   viewBox="0 0 1000 800"
+   version="1.1"
+   id="SVGRoot"
+   inkscape:version="0.92.4 (33fec40, 2019-01-16)"
+   sodipodi:docname="golgi_apparatus.svg">
+  <defs
+     id="defs851">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2952">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop2948" />
+      <stop
+         style="stop-color:#c3ffce;stop-opacity:0"
+         offset="1"
+         id="stop2950" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2944">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop2940" />
+      <stop
+         style="stop-color:#cdffe1;stop-opacity:0"
+         offset="1"
+         id="stop2942" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2944"
+       id="radialGradient2946"
+       cx="606.45514"
+       cy="721.72577"
+       fx="606.45514"
+       fy="721.72577"
+       r="42.299112"
+       gradientTransform="matrix(1.5797148,3.2374534,-3.8324535,1.8700486,2414.3997,-2577.4858)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2952"
+       id="radialGradient2954"
+       cx="873.53516"
+       cy="70.154091"
+       fx="873.53516"
+       fy="70.154091"
+       r="63.220377"
+       gradientTransform="matrix(-1.6682446,4.4074837,-4.6955533,-1.7773978,2660.2178,-3655.1365)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.024"
+     inkscape:cx="564.94141"
+     inkscape:cy="532.12891"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1037"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata854">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#fbfbf7;fill-opacity:1;stroke:none;stroke-width:0.73244303px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 14.17655,61.511755 c 94.95606,-149.025732 352.17353,43.133685 528.79122,37.519933 49.73145,-1.580701 32.16925,-68.399824 87.4159,-90.2723131 50.50634,-19.9957729 72.3366,85.4669911 135.1792,89.1700081 65.41095,3.854357 171.42669,-92.9271196 201.31889,-56.21017 69.39334,85.236597 -112.67879,199.352527 -131.00891,310.039077 -18.25688,110.2443 94.62043,247.79976 23.97246,334.3791 -60.708,74.39787 -191.18873,20.06901 -285.62485,37.45646 -80.68002,14.85469 -166.63234,94.85948 -239.41458,57.00881 C 249.39638,736.18513 90.069644,637.87272 69.941791,535.04182 52.78654,447.39762 172.54881,357.53961 137.41732,283.38977 101.19354,206.9345 -31.28582,132.86121 14.17655,61.511755 Z"
+       id="path999"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="assssaaasssa" />
+    <path
+       id="path1423"
+       style="fill:#faf7fd;fill-opacity:1;stroke:#aa87de;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 400.58674,137.8408 C 493.92077,247.71578 605.8353,209.64635 677.86702,81.045988 699.75688,41.965353 668.43577,7.6562394 661.62566,5.457536 620.20177,-7.9165625 654.17833,58.707714 562.83159,120.22307 525.59469,145.29939 472.38447,112.04941 413.09158,28.602303 386.0942,-9.3930206 352.1652,80.837865 400.58674,137.8408 Z m -79.15803,125.07983 c 147.02046,91.56459 321.03991,42.75743 454.58489,-62.34864 40.58327,-31.94091 1.93838,-63.16983 -6.0123,-58.0567 C 553.22397,281.9255 523.38274,294.5429 340.44444,182.51777 296.7902,155.78544 279.94452,237.08418 321.42871,262.92063 Z m -98.60047,87.3997 c 191.72494,109.85415 435.28852,75.82829 629.35993,-20.88987 58.97676,-29.39185 9.33875,-65.7411 -2.09436,-61.17735 -311.72577,124.43128 -353.942,134.69952 -592.70834,1e-5 -56.97634,-32.14308 -88.65553,51.07006 -34.55723,82.06721 z m -71.55623,108.02833 c 230.58278,132.11884 523.51058,91.1968 756.91542,-25.12368 70.92983,-35.34887 11.23146,-79.06521 -2.51885,-73.5765 -374.90479,149.65039 -425.67717,161.99976 -712.83547,10e-6 -68.52402,-38.65769 -106.623777,61.42069 -41.5611,98.70017 z m 0,222.76186 c 230.58278,-132.11884 523.51058,-91.19682 756.91542,25.12366 70.92983,35.34888 11.23146,79.06522 -2.51885,73.5765 C 530.76379,630.16029 479.99141,617.81095 192.83311,779.81067 124.30909,818.46836 86.209333,718.39 151.27201,681.11052 Z"
+       inkscape:connector-curvature="0">
+      <title
+         id="title2971">Golgi membrane</title>
+    </path>
+    <g
+       id="g1476"
+       style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-opacity:1">
+      <title
+         id="title2973">Golgi lumen</title>
+      <path
+         style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 161.91559,704.29753 c 175.96905,-115.10176 416.66075,-124.07812 716.80005,5.6765 62.47214,27.00762 38.7247,52.54076 26.77844,47.77219 -325.71673,-130.01604 -451.119,-160.75238 -697.39486,-8.97275 -54.49586,33.58573 -101.55361,-8.25831 -46.18363,-44.47594 z"
+         id="path1409"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sssss" />
+      <path
+         sodipodi:nodetypes="sssss"
+         inkscape:connector-curvature="0"
+         id="path1413"
+         d="m 161.91559,435.16165 c 175.96905,115.10176 416.66075,124.07811 716.80005,-5.6765 62.47214,-27.00765 38.7247,-52.54078 26.77844,-47.7722 -325.71673,130.01602 -451.119,160.75235 -697.39486,8.97275 -54.49586,-33.58575 -101.55361,8.2583 -46.18363,44.47595 z"
+         style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 231.67816,331.04078 c 146.31475,95.70479 346.44504,103.16846 596.00482,-4.7199 51.94436,-22.45631 32.19883,-43.68659 22.26574,-39.7216 -270.8269,108.10571 -375.09637,133.66233 -579.86981,7.46064 -45.31219,-27.92587 -84.43977,6.86663 -38.40075,36.98086 z"
+         id="path1417"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sssss" />
+      <path
+         sodipodi:nodetypes="sssss"
+         inkscape:connector-curvature="0"
+         id="path1421"
+         d="m 326.42618,243.98271 c 113.07055,81.16908 258.66044,74.76227 431.5992,-44.71499 35.99615,-24.86846 20.12614,-43.73221 13.21859,-39.28992 -188.33582,121.11938 -262.02609,152.46865 -419.70422,46.23331 -34.89098,-23.50773 -60.69206,12.23115 -25.11357,37.7716 z"
+         style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#fffef9;fill-opacity:1;stroke:#aad400;stroke-width:1.05050111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 408.37934,108.17146 C 478.98019,222.21206 566.78172,211.00566 663.10925,77.834741 684.08482,48.836426 658.76669,28.924979 654.90624,34.206185 552.94935,173.68656 523.06972,187.79934 420.90797,60.398339 396.32691,29.744494 386.16429,72.287706 408.37934,108.17146 Z"
+         id="path1425"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sssss" />
+    </g>
+    <path
+       sodipodi:nodetypes="aaaaa"
+       inkscape:connector-curvature="0"
+       id="path1448"
+       d="m 575.95622,714.84221 c -11.09715,15.82795 -6.59691,46.03899 9.13838,57.26716 17.28447,12.33362 50.7573,6.55656 62.75019,-10.96605 11.11206,-16.23564 4.75206,-46.8995 -11.57528,-57.87639 -16.98886,-11.42165 -48.56125,-5.18674 -60.31329,11.57528 z"
+       style="fill:url(#radialGradient2946);fill-opacity:1;stroke:#00d455;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title2979">Golgi-associated vesicle</title>
+    </path>
+    <path
+       style="fill:url(#radialGradient2954);fill-opacity:1;stroke:#00d455;stroke-width:1.34096098;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 818.25144,39.310055 c -16.60632,23.685738 -9.87195,68.895055 13.67514,85.697455 25.86534,18.45664 75.95576,9.81156 93.90252,-16.41015 16.62865,-24.295828 7.11123,-70.182767 -17.32182,-86.609135 -25.42299,-17.0919306 -72.66949,-7.761698 -90.25584,17.32183 z"
+       id="path1450"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="aaaaa">
+      <title
+         id="title2977">Transport vesicle membrane</title>
+    </path>
+    <path
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 596.67969,709.17969 29.29687,-0.97657 18.55469,26.36719 -4.88281,27.34375 -26.36719,11.71875 -27.34375,-8.78906 -9.76562,-26.36719 17.57812,-9.76562 8.78906,-11.71875 16.60157,0.97656 17.57812,15.625 -3.90625,19.53125 -14.64844,10.74219 -17.57812,0.97656 -16.60156,-15.625 9.76562,-12.69531 10.74219,-11.71875 19.53125,4.88281 1.95312,12.69531 -3.90625,12.69531 -14.64843,1.95313 -9.76563,-10.74219 8.78906,-10.74219 8.78907,8.78907"
+       id="golgi-associated_vesicle"
+       inkscape:connector-curvature="0"
+       inkscape:label="Golgi-associated vesicle">
+      <title
+         id="title1488">Golgi-associated vesicle</title>
+    </path>
+    <path
+       id="golgi_lumen"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 156.25,738.47656 c 7.8125,-2.92969 122.07031,-70.3125 122.07031,-70.3125 l 133.78907,-30.27344 127.92968,-6.83593 96.67969,17.57812 120.11719,31.25 114.25781,45.89844 29.29688,14.64844 M 407.22656,66.601562 437.5,113.47656 l 32.22656,39.0625 43.94532,13.67188 c 0,0 34.17968,-4.88282 39.0625,-6.83594 4.88281,-1.95313 48.82812,-33.20313 48.82812,-33.20313 L 638.67188,82.226562 659.17969,53.90625 M 327.14844,213.08594 c 4.88281,3.90625 91.79687,54.6875 91.79687,54.6875 l 92.77344,16.60156 75.19531,-9.76563 72.26563,-28.32031 109.375,-72.26562 m -609.375,223.63281 170.89844,90.82031 188.47656,21.48438 189.45312,-30.27344 191.40625,-78.125 v 0"
+       inkscape:connector-curvature="0"
+       inkscape:label="Golgi Lumen">
+      <title
+         id="title1500">Golgi Lumen</title>
+    </path>
+    <path
+       id="golgi_membrane"
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 402.23604,33.16203 c -2.07161,1.035801 -17.95389,24.168689 -17.95389,24.168689 l 3.79794,37.288834 c 0,0 11.73908,28.657157 12.77488,30.383497 1.0358,1.72633 27.62136,27.27609 28.31189,28.65716 0.69053,1.38106 33.14563,29.34769 33.14563,29.34769 l 57.31432,14.15595 43.50364,-10.70328 51.79005,-37.6341 43.8489,-52.135315 22.09709,-39.360436 c 0,0 -4.1432,-23.823422 -7.94114,-29.347694 -3.79794,-5.524272 -18.29915,-14.84648 -20.71602,-14.155946 -2.41687,0.690534 -8.97694,23.478155 -11.04854,26.24029 -2.0716,2.762136 -25.89503,34.871966 -27.27609,37.634102 -1.38107,2.762135 -35.5625,40.050969 -35.5625,40.050969 l -38.6699,18.64442 c 0,0 -36.25304,-5.52427 -39.70571,-8.28641 -3.45267,-2.76214 -48.68264,-45.229975 -48.68264,-45.229975 L 417.08252,45.246374 Z m -97.54854,166.25203 21.48438,-12.69531 37.10937,18.55469 43.94531,22.46093 43.94532,20.50782 42.96875,11.71875 38.08593,3.90625 36.13282,-4.88282 48.82812,-18.55468 69.33594,-37.10938 41.99219,-27.34375 42.96875,-25.39062 11.71875,5.85937 6.83593,16.60156 -12.69531,20.50782 -41.01562,29.29687 -80.07813,43.94531 -79.10156,28.32032 -80.07813,10.74218 -74.21875,-7.8125 -56.64062,-20.50781 -35.44517,-16.84609 c 0,0 -23.82342,-22.09709 -24.16869,-23.82342 -0.34527,-1.72633 -5.86954,-27.62136 -5.86954,-27.62136 z m -172.85156,509.76563 73.24219,-44.92188 111.32812,-38.08594 109.375,-18.55468 h 112.30469 l 119.14062,17.57812 111.32813,31.25 89.84375,33.20313 65.42969,34.17968 7.8125,24.41407 -17.57813,23.4375 c 0,0 -27.34375,-9.76563 -31.25,-11.71875 -3.90625,-1.95313 -95.70312,-35.15625 -95.70312,-35.15625 l -108.39844,-39.0625 -121.09375,-31.25 -101.5625,3.90625 -79.10156,21.48437 -94.72657,39.0625 -69.33593,41.01563 -51.75782,22.46093 c 0,0 -30.27343,-16.60156 -32.22656,-20.50781 C 126.95313,758.00781 125,725.78125 125,725.78125 Z m 3.90625,-333.00782 29.29687,-9.76562 38.08594,10.74219 71.28906,39.0625 90.82032,41.01562 67.38281,20.50781 82.03125,6.83594 76.17187,-6.83594 98.63282,-25.39062 92.77343,-32.22656 89.84375,-37.10938 41.01563,-13.67187 18.55469,23.4375 -3.90625,19.53125 L 910.15625,425 l -54.6875,22.46094 -60.54687,23.4375 -58.59375,23.4375 -72.26563,17.57812 -67.38281,11.71875 -89.84375,10.74219 -106.44531,-6.83594 c 0,0 -66.40625,-9.76562 -71.28907,-9.76562 -4.88281,0 -73.24218,-22.46094 -73.24218,-22.46094 L 181.64063,462.10937 131.83594,428.90625 125,388.86719 Z m 111.32812,-102.53906 84.96094,45.89844 85.9375,38.08594 67.38281,13.67187 68.35938,0.97656 87.89062,-19.53125 102.53907,-32.22656 85.9375,-33.20312 24.41406,-9.76563 14.64844,11.71875 3.90625,16.60156 -20.50782,17.57813 -57.61718,25.39062 -59.57032,23.4375 -91.79687,23.4375 -91.79688,15.625 -94.72656,0.97657 L 375.97656,399.60937 326.17188,386.91406 265.625,363.47656 211.91406,330.27344 200.19531,298.04687 218.75,273.63281 Z"
+       inkscape:connector-curvature="0"
+       inkscape:label="Golgi membrane">
+      <title
+         id="title1511">Golgi membrane</title>
+    </path>
+    <path
+       sodipodi:nodetypes="aaaaa"
+       inkscape:connector-curvature="0"
+       id="path1513"
+       d="m 833.36389,49.153663 c -11.90381,16.978493 -7.07644,49.38559 9.80265,61.429947 18.54088,13.23014 54.44687,7.03314 67.31153,-11.763182 11.9198,-17.415818 5.0975,-50.308653 -12.41668,-62.083459 -18.22379,-12.251895 -52.09121,-5.563767 -64.6975,12.416694 z"
+       style="fill:#fcfaff;fill-opacity:1;stroke:#5fbcd3;stroke-width:0.9612323;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <title
+         id="title2975">Transport vesicle</title>
+    </path>
+    <path
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 818.35938,66.601562 1.70898,22.949218 10.49805,24.16992 15.625,10.49805 27.83203,3.66211 31.49414,-12.69531 17.33398,-17.089848 c 0,0 3.41797,-31.982422 2.92969,-33.203125 -0.48828,-1.220703 -13.18359,-30.029297 -13.18359,-30.029297 0,0 -16.35742,-11.71875 -17.57813,-12.207031 -1.2207,-0.488281 -26.61133,0.732422 -26.61133,0.732422 l -31.73828,4.882812 -7.8125,15.136719 z"
+       id="ER_to_Golgi_transport_vesicle_membrane"
+       inkscape:connector-curvature="0"
+       inkscape:label="ER to Golgi transport vesicle membrane">
+      <title
+         id="title1521">ER to Golgi transport vesicle membrane</title>
+    </path>
+    <path
+       style="fill:none;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 845.94727,50.976561 c 0,0 21.72851,-14.648437 22.94922,-14.648437 1.2207,0 19.77539,0.488281 21.48437,2.197265 1.70899,1.708985 13.67188,10.498047 14.16016,12.939454 0.48828,2.441406 4.88281,22.460937 4.88281,22.460937 L 903.56445,101.75781 875.97656,112.5 c 0,0 -28.07617,-5.37109 -29.78515,-5.37109 -1.70899,0 -12.93946,-19.531255 -12.93946,-19.531255 l -0.24414,-27.587891 18.55469,-0.976562 19.77539,-15.869141 20.50781,5.371094 9.03321,22.460938 -6.10352,28.808593 c 0,0 -27.09961,6.103514 -29.05273,5.859374 -1.95313,-0.24414 -21.48438,-9.033202 -21.48438,-9.033202 l -6.10351,-24.414062 7.8125,-7.8125 28.32031,-10.498047 14.89258,2.197265 2.68554,19.53125 c 0,0 -4.39453,19.531251 -6.10351,20.263672 -1.70899,0.732422 -23.19336,0.488282 -23.19336,0.488282 l -15.86914,-8.544922 c 0,0 -2.68555,-15.136719 -1.46484,-15.625 1.2207,-0.488282 18.79882,-7.8125 18.79882,-7.8125 l 17.08985,-0.244141 c 0,0 5.85937,15.869141 3.90625,17.822266 -1.95313,1.953125 -8.30078,9.521484 -9.52149,9.521484 -1.2207,0 -21.48437,-4.150391 -21.48437,-4.150391 0,0 -4.15039,-13.916015 -3.17383,-14.160156 0.97656,-0.24414 22.70508,-2.929687 22.70508,-2.929687 0,0 2.92969,11.96289 1.2207,12.207031 -1.70898,0.244141 -13.18359,-1.953125 -13.18359,-1.953125 l 3.41797,-4.638672"
+       id="ER_to_Golgi_transport_vesicle"
+       inkscape:connector-curvature="0"
+       inkscape:label="ER to Golgi transport vesicle">
+      <title
+         id="title1519">ER to Golgi transport vesicle</title>
+    </path>
+  </g>
+</svg>

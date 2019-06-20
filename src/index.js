@@ -9,8 +9,6 @@ import ToolBar from "./ToolBar";
 import Navigator from "./Navigator";
 import LocationFilter from "./LocationFilter";
 import { ColorSchemeSelector } from "./ColorSchemeSelector";
-import Mitochondria from "./Mitochondria";
-import EndoplasmicReticulum from "./EndoplasmicReticulum";
 import Loader from "./Loader";
 import LabelControl from "./LabelControl";
 import {
@@ -32,11 +30,11 @@ import {
 import "antd/dist/antd.css";
 import "./style.css";
 
-import * as bg from "./bg.svg";
-import Nucleus from "./Nucleus";
+import Nucleus from "./nucleus";
 import GolgiApparatus from "./GolgiApparatus";
-
 import Ribosome from "./Ribosome";
+import Mitochondria from "./Mitochondria";
+import EndoplasmicReticulum from "./EndoplasmicReticulum";
 
 export class App extends Component {
   constructor(props) {
@@ -112,7 +110,7 @@ export class App extends Component {
         );
         console.log(d);
         return d;
-      case "golgiApparatus":
+      case "golgi_apparatus":
         d = generalizeLocations(clone(data), GolgiLocations);
         d.nodes = d.nodes.filter(n =>
           GolgiLocations.some(m => m.location === n.location)
@@ -214,7 +212,7 @@ export class App extends Component {
             nodeLabelContent={this.state.nodeLabelContent}
           />
         )}
-        {this.isOrganelleSelected("golgiApparatus") && (
+        {this.isOrganelleSelected("golgi_apparatus") && (
           <GolgiApparatus
             data={data}
             selectedNode={this.state.selectedNode}

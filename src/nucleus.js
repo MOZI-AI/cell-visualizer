@@ -3,15 +3,16 @@ import {
   NODE_RADIUS,
   SELECTED_NODE_RADIUS,
   getPointsOnPath,
-  GolgiLocations
+  NucleusLocations
 } from "./utils";
-import * as svg from "./golgi_apparatus.svg";
+import * as svg from "./nucleus.svg";
 const d3 = require("d3");
 
 const WIDTH = window.innerWidth;
-const PATHS = GolgiLocations.map(m => m.location);
+const HEIGHT = window.innerHeight;
+const PATHS = NucleusLocations.map(m => m.location);
 
-export default class GolgiApparatus extends React.Component {
+export default class Nucleus extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -99,7 +100,7 @@ export default class GolgiApparatus extends React.Component {
 
   drawGraph() {
     const { data } = this.props;
-    console.log("Goldi data", data);
+
     const nodes = PATHS.reduce((nodesWithCoordinates, path) => {
       const nodes = data.nodes.filter(n => n.location === path);
       const pathElement = d3.select(`#${path}`).node();
